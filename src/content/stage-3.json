@@ -1,0 +1,214 @@
+{
+  "lessons": [
+    {
+      "id": "24",
+      "day": 24,
+      "title": "為什麼需要重複？",
+      "conceptGoal": "重複是程式的超能力",
+      "noCode": true,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "派姨跟你說：生活中很多事是「重複做」——洗碗、摺衣服、每天刷牙。如果程式要「做 100 次」或「做 1000 次」，我們不可能複製貼上 100 行。這時候就需要「迴圈」——程式的超能力。" },
+        { "id": "concept", "title": "概念", "content": "**重複**是程式的超能力。\n\n如果要做 100 次呢？1000 次呢？我們用**迴圈**（**loop**）告訴電腦：把這段程式碼重複執行 N 次，或「只要條件成立就繼續做」。\n\nPython 有兩種迴圈：\n- `while` ——「只要……就繼續做」（條件式）\n- `for` ——「做 N 次」或「走訪每一個」（計次式）\n\n這兩種在不同的情況下各有優勢，接下來幾課我們會一一學到。" },
+        { "id": "demo", "title": "示範", "content": "無程式碼的比較：\n\n沒有迴圈的世界——想像你要印出 1 到 10，就要寫 10 行 `print`：\n\n```python\nprint(1)\nprint(2)\nprint(3)\n# ... 還要再寫 7 行\n```\n\n有迴圈只要寫「從 1 做到 10，每次印出這個數字」——一行搞定！這就是迴圈的威力。" },
+        { "id": "practice", "title": "實作", "content": "想一想：你每天或每週會「重複做」的事有哪些？\n\n- 每天收信\n- 每週買菜\n- 每個月繳費\n\n程式裡我們會用迴圈來處理這種「做很多次」的任務。" },
+        { "id": "summary", "title": "總結", "content": "迴圈讓程式可以重複執行同一段程式碼，不用複製貼上。下一課我們學 `while` 迴圈——「當……的時候」就繼續做。" }
+      ]
+    },
+    {
+      "id": "25",
+      "day": 25,
+      "title": "while 迴圈 - 當...的時候",
+      "conceptGoal": "條件式重複",
+      "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "「只要條件成立就繼續做」——這就是 `while` 迴圈。例如：只要 `count` 小於 10，就繼續印出 `count` 並加 1。今天派姨教你 `while` 的語法。" },
+        { "id": "concept", "title": "概念", "content": "**while 迴圈**的語法：\n\n```python\nwhile 條件:\n    做這件事\n```\n\n程式會先檢查條件；如果成立就執行「做這件事」，然後**再回去檢查條件**，成立就再執行……直到條件不成立為止。\n\n⚠️ 常見錯誤：**無限迴圈**。如果條件永遠成立（例如 `while True`），程式就會一直跑、停不下來。所以要確保條件有一天會變成 `False`——通常是在迴圈裡更新某個變數。" },
+        { "id": "demo", "title": "示範", "content": "倒數計時器：\n\n```python\ncount = 5\nwhile count > 0:\n    print(count)\n    count = count - 1\nprint(\"發射！\")\n```\n\n`count` 從 5 開始，每次減 1，直到 0 為止。輸出：\n\n```\n5\n4\n3\n2\n1\n發射！\n```\n\n> 派姨小提示：每次迴圈裡一定要有「讓條件最終變 False」的動作（這裡是 `count = count - 1`），不然就會變成無限迴圈！" },
+        { "id": "practice", "title": "實作", "content": "寫一個 `while` 迴圈：\n\n```python\nn = 1\nwhile n <= 5:\n    print(n)\n    n = n + 1\n```\n\n執行後應該會印出 1 2 3 4 5。試試把 5 改成 10，看看會不會印到 10。" },
+        { "id": "summary", "title": "總結", "content": "`while` 是「條件式重複」——條件成立就繼續做。記得要在迴圈裡更新條件，避免無限迴圈。下一課我們學 `for` 迴圈——「做 N 次」。" }
+      ]
+    },
+    {
+      "id": "26",
+      "day": 26,
+      "title": "for 迴圈 - 固定次數",
+      "conceptGoal": "已知次數的重複",
+      "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "有時候我們知道要「做 N 次」——例如印出 1 到 10、跑 5 次。這時候用 `for` 迴圈比 `while` 更簡單。Python 的 `for` 常跟 `range()` 一起用。" },
+        { "id": "concept", "title": "概念", "content": "`for 變數 in range(N):` 表示「做 N 次」，變數會依序是 0, 1, 2, ..., N-1。\n\n`range()` 的三種用法：\n- `range(5)` → 0, 1, 2, 3, 4\n- `range(1, 6)` → 1, 2, 3, 4, 5\n- `range(1, 10, 2)` → 1, 3, 5, 7, 9（從 1 到 10，每次加 2）\n\n> 派姨小提示：`range(N)` 包含 0 但不包含 N。如果要 1 到 N，用 `range(1, N+1)`。" },
+        { "id": "demo", "title": "示範", "content": "九九乘法表（先做一行）：\n\n```python\nfor i in range(1, 10):\n    print(\"2 *\", i, \"=\", 2 * i)\n```\n\n輸出：\n\n```\n2 * 1 = 2\n2 * 2 = 4\n2 * 3 = 6\n...\n2 * 9 = 18\n```\n\n只要一行迴圈就印出了 9 行計算結果！" },
+        { "id": "practice", "title": "實作", "content": "1. 用 `for i in range(5):` 印出 `i` 的值，看看是 0 到 4\n2. 再用 `for i in range(1, 6):` 印出 `i`，看看是 1 到 5\n3. 挑戰：用 `range(0, 20, 3)` 印出結果，猜猜會是什麼" },
+        { "id": "summary", "title": "總結", "content": "`for` 搭配 `range()` 可以「做 N 次」。下一課我們學「走訪資料」——用 `for` 迴圈處理列表裡的每一個東西。" }
+      ]
+    },
+    {
+      "id": "27",
+      "day": 27,
+      "title": "走訪資料 - 列表初探",
+      "conceptGoal": "一個變數存多個東西",
+      "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "一個變數可以存「很多個東西」——例如購物清單：`[\"牛奶\", \"蛋\", \"麵包\"]`。這種「一串東西」叫**列表**（**list**）。用 `for` 迴圈可以「走訪」列表裡的每一個元素。" },
+        { "id": "concept", "title": "概念", "content": "**列表**（list）：用方括號 `[]` 包起來，裡面用逗號隔開。\n\n```python\nfruits = [\"蘋果\", \"香蕉\", \"橘子\"]\n```\n\n**for 走訪列表**：`for item in fruits:` 表示「對 `fruits` 裡的每一個 `item` 做下面的事」。`item` 會依序是 `\"蘋果\"`、`\"香蕉\"`、`\"橘子\"`。\n\n列表是 Python 裡最常用的資料結構之一，之後我們會深入學習。現在先記住：**列表可以存多個東西，for 可以一一處理**。" },
+        { "id": "demo", "title": "示範", "content": "```python\nfruits = [\"蘋果\", \"香蕉\", \"橘子\"]\nfor f in fruits:\n    print(f)\n```\n\n輸出：\n\n```\n蘋果\n香蕉\n橘子\n```\n\n也可以用 `len()` 取得列表長度：\n\n```python\nprint(\"水果有\", len(fruits), \"種\")\n```" },
+        { "id": "practice", "title": "實作", "content": "1. 建立一個列表（例如名字或數字）\n2. 用 `for` 迴圈印出每一個元素\n3. 試試 `len(列表)` 取得列表有幾個元素\n\n```python\nnames = [\"小明\", \"小華\", \"小美\"]\nfor name in names:\n    print(\"你好，\" + name + \"！\")\n```" },
+        { "id": "summary", "title": "總結", "content": "列表可以存多個東西，`for` 迴圈可以走訪每一個。下一課我們用迴圈做「尋找最大值」「累加總和」「資料過濾」。" }
+      ]
+    },
+    {
+      "id": "28",
+      "day": 28,
+      "title": "迴圈的實際應用",
+      "conceptGoal": "尋找最大值、累加總和、資料過濾",
+      "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "派姨跟你用迴圈做三件常見的事：在一串數字裡**找最大值**、把一串數字**加總**、把符合條件的東西**挑出來**（過濾）。這三種用法在真實程式裡非常常見！" },
+        { "id": "concept", "title": "概念", "content": "**尋找最大值**：用一個變數 `max_val`，走訪列表時如果當前數字比 `max_val` 大就更新。\n\n**累加總和**：用一個變數 `total = 0`，走訪時 `total = total + 當前數字`。\n\n**資料過濾**：走訪時用 `if` 條件判斷，符合條件的才印出或加入新列表。\n\n這三種模式（pattern）你以後會一直用到，值得好好記住。" },
+        { "id": "demo", "title": "示範", "content": "找最大值：\n\n```python\nnums = [3, 1, 4, 1, 5]\nmax_val = nums[0]\nfor n in nums:\n    if n > max_val:\n        max_val = n\nprint(\"最大值是\", max_val)  # 5\n```\n\n累加總和：\n\n```python\ntotal = 0\nfor n in nums:\n    total = total + n\nprint(\"總和是\", total)  # 14\n```\n\n> 派姨小提示：Python 其實有內建的 `max()`、`sum()` 可以直接用，但自己寫一遍才能真正理解迴圈在做什麼！" },
+        { "id": "practice", "title": "實作", "content": "1. 用一個數字列表，寫迴圈找出最大值並印出\n2. 再寫一個迴圈把全部加總並印出\n3. 試試「只印出大於 3 的數字」——用 `if` 在迴圈裡判斷\n\n```python\nnums = [10, 3, 7, 1, 8]\n# 你的程式碼……\n```" },
+        { "id": "summary", "title": "總結", "content": "迴圈可以處理整串資料：找最大、加總、過濾。這三種模式要記住！下一課開始我們用迴圈做小專案：猜數字遊戲。" }
+      ]
+    },
+    {
+      "id": "29",
+      "day": 29,
+      "title": "猜數字遊戲",
+      "conceptGoal": "迴圈小專案",
+      "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "派姨跟你做「猜數字」遊戲：程式心裡想一個數字，用迴圈讓使用者一直猜，直到猜對為止。每次猜完會告訴你「太大」或「太小」。" },
+        { "id": "concept", "title": "概念", "content": "用 `while` 迴圈重複「猜一次、檢查、印出提示」的流程。當猜對時跳出迴圈。\n\n這裡先用變數模擬猜的數字序列。之後學 `input()` 就可以讓使用者真的輸入。" },
+        { "id": "demo", "title": "示範", "content": "簡化版（用變數模擬）：\n\n```python\nanswer = 42\nguesses = [50, 30, 40, 42]\n\nfor guess in guesses:\n    if guess > answer:\n        print(guess, \"太大了\")\n    elif guess < answer:\n        print(guess, \"太小了\")\n    else:\n        print(guess, \"猜對了！\")\n```\n\n輸出：\n\n```\n50 太大了\n30 太小了\n40 太小了\n42 猜對了！\n```" },
+        { "id": "practice", "title": "實作", "content": "1. 設一個 `answer` 變數\n2. 建立一個 `guesses` 列表，模擬幾次猜測\n3. 用 `for` 迴圈走訪每次猜測，用 `if-elif-else` 印出提示\n4. 挑戰：改用 `while` 迴圈，設定一個 `guess` 變數在迴圈裡手動更新\n\n> 派姨小提示：之後學了 `import random` 就可以讓答案隨機產生，學了 `input()` 就能讓使用者用鍵盤猜！" },
+        { "id": "summary", "title": "總結", "content": "迴圈可以讓「猜、檢查」重複直到條件滿足。下一課我們做密碼產生器。" }
+      ]
+    },
+    {
+      "id": "30",
+      "day": 30,
+      "title": "密碼產生器",
+      "conceptGoal": "迴圈小專案",
+      "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "派姨跟你做「密碼產生器」：用迴圈重複 N 次，每次隨機選一個字元，把選到的字接在一起，就變成一個隨機密碼。" },
+        { "id": "concept", "title": "概念", "content": "步驟：\n1. 準備一個字元集（包含所有可以選的字元）\n2. 用 `for _ in range(8)` 做 8 次（密碼長度 8）\n3. 每次用 `random.choice(chars)` 隨機選一個字元\n4. 把選到的字用字串相加接起來\n\n`import random` 是載入 Python 的隨機數模組。`random.choice(s)` 會從 `s` 裡隨機選一個。" },
+        { "id": "demo", "title": "示範", "content": "```python\nimport random\n\nchars = \"abcdefghijklmnopqrstuvwxyz0123456789\"\npassword = \"\"\nfor _ in range(8):\n    password = password + random.choice(chars)\nprint(\"你的密碼是：\", password)\n```\n\n每次執行都會產生不同的密碼！`_` 是一個約定俗成的變數名，表示「我不會用到這個變數的值」。\n\n> 派姨小提示：想讓密碼更安全？加入大寫和特殊字元：`chars = \"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%\"`" },
+        { "id": "practice", "title": "實作", "content": "1. 用上面的程式碼產生一個 8 位密碼\n2. 把長度改成 12，看看密碼會不會更長\n3. 挑戰：把字元集加上大寫字母\n\n⚠️ 常見錯誤：如果忘了 `import random`，執行會報 `NameError: name 'random' is not defined`。" },
+        { "id": "summary", "title": "總結", "content": "迴圈可以「重複組裝」一個字串。`random.choice()` 讓選擇隨機化。下一課我們做簡易通訊錄。" }
+      ]
+    },
+    {
+      "id": "31",
+      "day": 31,
+      "title": "簡易通訊錄",
+      "conceptGoal": "迴圈小專案",
+      "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "通訊錄就是「一串資料」——每個聯絡人有名字、電話。我們可以用列表存幾個聯絡人，用 `for` 迴圈印出每一個人。" },
+        { "id": "concept", "title": "概念", "content": "用兩個「對齊」的列表存資料：`names` 存名字，`phones` 存電話。`names[i]` 和 `phones[i]` 對應同一個人。\n\n用 `for i in range(len(names)):` 可以用索引 `i` 同時存取兩個列表。\n\n> 派姨小提示：之後學「字典」（dictionary）就可以更優雅地一筆一筆存。現在先用列表配對的方式。" },
+        { "id": "demo", "title": "示範", "content": "```python\nnames = [\"小明\", \"小華\", \"小美\"]\nphones = [\"0912-345-678\", \"0923-456-789\", \"0934-567-890\"]\n\nprint(\"=== 通訊錄 ===\")\nfor i in range(len(names)):\n    print(names[i], \":\", phones[i])\n```\n\n輸出：\n\n```\n=== 通訊錄 ===\n小明 : 0912-345-678\n小華 : 0923-456-789\n小美 : 0934-567-890\n```" },
+        { "id": "practice", "title": "實作", "content": "1. 建立兩個列表：名字和電話（各 2～3 筆）\n2. 用 `for` 迴圈印出「名字 : 電話」每一行\n3. 試試再加一個列表「地址」，在迴圈裡一起印出" },
+        { "id": "summary", "title": "總結", "content": "迴圈可以走訪多個列表、依序印出或處理。下一課我們做待辦清單。" }
+      ]
+    },
+    {
+      "id": "32",
+      "day": 32,
+      "title": "待辦清單",
+      "conceptGoal": "迴圈小專案",
+      "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "待辦清單就是「一串待辦事項」。用一個列表存幾件事，用 `for` 迴圈印出帶有編號的清單。派姨跟你做一個簡易待辦清單。" },
+        { "id": "concept", "title": "概念", "content": "如何在迴圈裡加上編號？兩種方法：\n\n1. `for i in range(len(todos)):` 用 `i+1` 當編號\n2. `for i, todo in enumerate(todos):` 更 Pythonic 的寫法\n\n`enumerate()` 會同時給你「索引」和「值」，非常方便！" },
+        { "id": "demo", "title": "示範", "content": "```python\ntodos = [\"買菜\", \"回信\", \"運動\"]\n\nprint(\"=== 待辦清單 ===\")\nfor i, todo in enumerate(todos):\n    print(i + 1, \".\", todo)\n```\n\n輸出：\n\n```\n=== 待辦清單 ===\n1 . 買菜\n2 . 回信\n3 . 運動\n```\n\n> 派姨小提示：`enumerate()` 預設從 0 開始，所以印的時候要 `i + 1`。也可以寫 `enumerate(todos, 1)` 讓它從 1 開始。" },
+        { "id": "practice", "title": "實作", "content": "1. 建立一個待辦列表（3～5 件事）\n2. 用 `for` 迴圈印出編號和內容\n3. 試試用 `enumerate`：\n\n```python\ntodos = [\"買菜\", \"回信\", \"運動\", \"讀書\", \"散步\"]\nfor i, todo in enumerate(todos, 1):\n    print(i, \".\", todo)\n```" },
+        { "id": "summary", "title": "總結", "content": "迴圈可以帶編號走訪列表，做出「清單」的感覺。`enumerate()` 是很方便的工具。下一課我們做簡單統計分析。" }
+      ]
+    },
+    {
+      "id": "33",
+      "day": 33,
+      "title": "簡單統計分析",
+      "conceptGoal": "迴圈小專案",
+      "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "派姨跟你用迴圈做「簡單統計」：給一串數字，算總和、平均、最大值、最小值。把前面學的「累加」「找最大」合在一起做一個完整的統計工具！" },
+        { "id": "concept", "title": "概念", "content": "四個統計指標：\n\n- **總和**：迴圈累加\n- **平均**：總和 / 個數\n- **最大值**：迴圈裡用 `if` 更新 max\n- **最小值**：迴圈裡用 `if` 更新 min\n\n用一個列表 `nums`，一個迴圈裡可以同時算總和、更新 max 和 min——一次走訪就搞定！" },
+        { "id": "demo", "title": "示範", "content": "```python\nnums = [10, 20, 30, 40, 50]\n\ntotal = 0\nmax_val = nums[0]\nmin_val = nums[0]\n\nfor n in nums:\n    total = total + n\n    if n > max_val:\n        max_val = n\n    if n < min_val:\n        min_val = n\n\navg = total / len(nums)\n\nprint(\"總和：\", total)\nprint(\"平均：\", avg)\nprint(\"最大值：\", max_val)\nprint(\"最小值：\", min_val)\n```" },
+        { "id": "practice", "title": "實作", "content": "1. 用一個數字列表（例如每日步數或氣溫）\n2. 寫迴圈算出總和、平均、最大值、最小值\n3. 全部印出來\n\n> 派姨小提示：Python 內建有 `sum()`、`max()`、`min()`，但自己寫一遍才能真正理解迴圈的威力！" },
+        { "id": "summary", "title": "總結", "content": "迴圈可以一次處理多種統計。下一課我們做迴圈綜合練習（一）。" }
+      ]
+    },
+    {
+      "id": "34",
+      "day": 34,
+      "title": "迴圈綜合練習（一）",
+      "conceptGoal": "整合迴圈與列表",
+      "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "派姨跟你做迴圈綜合練習：用迴圈建立一個列表（例如 1 到 10 的平方）、用迴圈印出列表的每一個元素並附上說明。整合「迴圈」和「列表」。" },
+        { "id": "concept", "title": "概念", "content": "用迴圈可以「組裝」一個新列表：\n\n1. 先 `result = []`（空列表）\n2. 迴圈裡 `result.append(某值)`\n\n`.append()` 是列表的**方法**（method），意思是「在列表尾巴加一個東西」。\n\n```python\nresult = []\nfor i in range(1, 6):\n    result.append(i * i)\n# result 現在是 [1, 4, 9, 16, 25]\n```" },
+        { "id": "demo", "title": "示範", "content": "```python\nsquares = []\nfor i in range(1, 11):\n    squares.append(i * i)\n\nprint(\"平方表：\", squares)\n\nfor i, sq in enumerate(squares, 1):\n    print(i, \"的平方是\", sq)\n```" },
+        { "id": "practice", "title": "實作", "content": "1. 用 `for` 迴圈把 1 到 5 的平方放進一個列表\n2. 再印出這個列表\n3. 再寫一個迴圈走訪這個列表，印出「第 i 個是 xxx」\n\n⚠️ 常見錯誤：忘記先建立空列表 `result = []` 就直接 `result.append()`，會報 `NameError`。" },
+        { "id": "summary", "title": "總結", "content": "迴圈可以建立列表、走訪列表。`.append()` 是往列表尾巴加東西。下一課我們做迴圈綜合練習（二）。" }
+      ]
+    },
+    {
+      "id": "35",
+      "day": 35,
+      "title": "迴圈綜合練習（二）",
+      "conceptGoal": "整合迴圈與條件",
+      "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "迴圈裡面可以放 `if`——「走訪每一個，但只處理符合條件的」。派姨跟你練習：走訪一串數字，只印出偶數；或只把大於 10 的加總。" },
+        { "id": "concept", "title": "概念", "content": "`for` 迴圈裡加 `if`：只有條件成立時才執行某段程式碼。這樣可以做到「**過濾**」或「**條件累加**」。\n\n```python\nfor n in nums:\n    if 條件:\n        做這件事  # 只有符合條件的才做\n```\n\n這個模式在資料處理中非常常見——從一大堆資料中挑出你要的。" },
+        { "id": "demo", "title": "示範", "content": "只印偶數：\n\n```python\nnums = [1, 2, 3, 4, 5, 6, 7, 8]\nfor n in nums:\n    if n % 2 == 0:\n        print(n)\n```\n\n條件累加（只加大於 5 的）：\n\n```python\nnums = [3, 7, 1, 9, 4, 8]\ntotal = 0\nfor n in nums:\n    if n > 5:\n        total = total + n\nprint(\"大於 5 的總和：\", total)  # 7+9+8 = 24\n```" },
+        { "id": "practice", "title": "實作", "content": "1. 給一個數字列表，用迴圈只印出大於 5 的數字\n2. 再寫一個迴圈：只把小於 10 的數字加總，印出總和\n3. 挑戰：建立一個新列表，只放偶數\n\n```python\nnums = [12, 3, 7, 8, 15, 4, 9]\nevens = []\nfor n in nums:\n    if n % 2 == 0:\n        evens.append(n)\nprint(evens)\n```" },
+        { "id": "summary", "title": "總結", "content": "迴圈加條件可以「篩選」和「條件處理」。下一課我們做迴圈綜合練習（三）——巢狀迴圈！" }
+      ]
+    },
+    {
+      "id": "36",
+      "day": 36,
+      "title": "迴圈綜合練習（三）",
+      "conceptGoal": "巢狀迴圈應用",
+      "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "「迴圈裡面還有迴圈」叫**巢狀迴圈**（nested loop）。例如印出九九乘法表：外層迴圈控制被乘數，內層迴圈控制乘數。派姨跟你做巢狀迴圈練習。" },
+        { "id": "concept", "title": "概念", "content": "巢狀迴圈的結構：\n\n```python\nfor i in range(1, 10):\n    for j in range(1, 10):\n        print(i, \"*\", j, \"=\", i * j)\n```\n\n內層迴圈跑完一輪，外層才進下一格。所以會先 (1,1)(1,2)...(1,9)，再 (2,1)...(2,9)，依此類推。\n\n> 派姨小提示：巢狀迴圈的執行次數是「外層次數 × 內層次數」。外層 9 次、內層 9 次就是 81 次！" },
+        { "id": "demo", "title": "示範", "content": "先做小一點的（3×3）：\n\n```python\nfor i in range(1, 4):\n    for j in range(1, 4):\n        print(i, \"*\", j, \"=\", i * j)\n    print(\"---\")\n```\n\n輸出：\n\n```\n1 * 1 = 1\n1 * 2 = 2\n1 * 3 = 3\n---\n2 * 1 = 2\n2 * 2 = 4\n2 * 3 = 6\n---\n3 * 1 = 3\n3 * 2 = 6\n3 * 3 = 9\n---\n```" },
+        { "id": "practice", "title": "實作", "content": "1. 用巢狀迴圈印出 2 到 5 的乘法表\n2. 再試試只印「下三角」：內層 `j` 只到 `i` 為止\n\n```python\nfor i in range(1, 6):\n    for j in range(1, i + 1):\n        print(i, \"*\", j, \"=\", i * j)\n```" },
+        { "id": "summary", "title": "總結", "content": "巢狀迴圈可以處理「每一行、每一格」的結構。下一課我們做迴圈綜合練習（四）——實戰題目。" }
+      ]
+    },
+    {
+      "id": "37",
+      "day": 37,
+      "title": "迴圈綜合練習（四）",
+      "conceptGoal": "實戰題目",
+      "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "派姨出幾題實戰題：用迴圈印出星號三角形、用迴圈判斷一個數字是不是質數。把迴圈和條件整合運用！" },
+        { "id": "concept", "title": "概念", "content": "**星號三角形**：外層迴圈控制「第幾行」，內層迴圈控制「這行印幾個星號」。第一行 1 個、第二行 2 個……。\n\n**判斷質數**：質數只能被 1 和自己整除。用 `for i in range(2, n):` 檢查 `n % i == 0`，若有一個成立就不是質數。\n\n```python\ndef is_prime(n):\n    if n < 2:\n        return False\n    for i in range(2, n):\n        if n % i == 0:\n            return False\n    return True\n```\n\n（我們還沒正式學函數，這裡先用「變數 + 迴圈」的寫法。）" },
+        { "id": "demo", "title": "示範", "content": "星號三角形：\n\n```python\nfor i in range(1, 6):\n    print(\"*\" * i)\n```\n\n輸出：\n\n```\n*\n**\n***\n****\n*****\n```\n\n> 派姨小提示：`\"*\" * 3` 會得到 `\"***\"`。字串乘以數字會重複字串！" },
+        { "id": "practice", "title": "實作", "content": "1. 印出 5 行的星號三角形\n2. 判斷一個數字是否質數：\n\n```python\nn = 7\nis_prime = True\nfor i in range(2, n):\n    if n % i == 0:\n        is_prime = False\n\nif is_prime and n >= 2:\n    print(n, \"是質數\")\nelse:\n    print(n, \"不是質數\")\n```\n\n試試 `n = 4`、`n = 11`、`n = 15`。" },
+        { "id": "summary", "title": "總結", "content": "迴圈可以畫圖、可以做數學判斷。把迴圈和條件結合就能做很多有趣的事！下一課我們做第三階段回顧。" }
+      ]
+    },
+    {
+      "id": "38",
+      "day": 38,
+      "title": "迴圈綜合練習（五）",
+      "conceptGoal": "第三階段回顧",
+      "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "派姨跟你擊掌！第三階段「重複的力量」快要收尾了。今天我們回顧所有學過的迴圈知識，並做一個小總結。" },
+        { "id": "concept", "title": "概念", "content": "回顧：\n\n- **while** ——條件式重複，「只要……就繼續」\n- **for + range** ——做 N 次\n- **for + 列表** ——走訪每一個元素\n- **迴圈 + if** ——過濾、條件處理\n- **巢狀迴圈** ——處理二維結構\n- **常用模式**：累加、找最大最小、過濾、組裝列表\n\n迴圈是程式的超能力——不用複製貼上就能重複做很多次。" },
+        { "id": "demo", "title": "示範", "content": "綜合小程式——成績統計：\n\n```python\nscores = [85, 92, 78, 90, 65, 88]\n\ntotal = 0\nhigh_scores = []\n\nfor score in scores:\n    total = total + score\n    if score >= 85:\n        high_scores.append(score)\n\navg = total / len(scores)\nprint(\"平均分數：\", round(avg, 1))\nprint(\"85 分以上：\", high_scores)\nprint(\"最高分：\", max(scores))\n```" },
+        { "id": "practice", "title": "實作", "content": "自己出題：用一個列表（數字或字串），用迴圈做「你喜歡的處理」——印出、加總、找最大、過濾……。\n\n完成後慶祝：第三階段完成！下一階段我們要學「函數」——組織你的程式。" },
+        { "id": "summary", "title": "總結", "content": "第三階段完成！你已經會用 `while`、`for`、列表走訪和巢狀迴圈。下一階段我們學「函數」——可重用的程式碼。繼續加油！" }
+      ]
+    }
+  ]
+}

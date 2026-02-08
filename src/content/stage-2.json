@@ -1,0 +1,144 @@
+{
+  "lessons": [
+    {
+      "id": "14",
+      "day": 14,
+      "title": "電腦如何做選擇？",
+      "conceptGoal": "理解條件判斷的必要性",
+      "noCode": true,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "派姨跟你說：生活中我們常常要做選擇——如果下雨就帶傘，如果餓了就吃飯。程式也需要「如果……就……」的能力，才能做出有用的判斷。今天我們來理解「條件判斷」是什麼。" },
+        { "id": "concept", "title": "概念", "content": "程式需要「如果……就……」的能力。\n\n生活例子：如果下雨就帶傘，否則就不帶。程式裡我們會用「條件」來決定要執行哪一段程式碼。\n\n介紹**布林值**（**Boolean**）：`True`（真）和 `False`（假）。就像是非題——答案是「是」或「否」。程式會根據條件是 `True` 還是 `False` 來決定走哪一條路。\n\n布林值只有兩個：`True` 和 `False`（注意大寫！）。它們是 Python 的基礎型別之一，跟我們之前學過的 string 和 integer 一樣重要。" },
+        { "id": "demo", "title": "示範", "content": "決策樹遊戲：想像一個岔路——「今天下雨嗎？」如果「是」（`True`），走左邊（帶傘）；如果「否」（`False`），走右邊（不帶傘）。\n\n程式就是用這種方式做選擇的。每到一個岔路口，程式會問一個「是或否」的問題，然後根據答案決定接下來執行哪一段程式碼。" },
+        { "id": "practice", "title": "實作", "content": "想一想：還有哪些事是「如果……就……」？\n\n- 如果溫度高於 30 度就開冷氣\n- 如果錢夠就買\n- 如果時間到了就出門\n\n先不用寫程式，練習「看出」條件和結果的關係。" },
+        { "id": "summary", "title": "總結", "content": "條件判斷讓程式能做選擇。布林值 `True`/`False` 就像是非題。下一課我們來寫第一個 `if` 語句。" }
+      ]
+    },
+    {
+      "id": "15",
+      "day": 15,
+      "title": "第一個 if 語句",
+      "conceptGoal": "if 讓程式做選擇",
+      "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "上一課我們知道程式需要「如果……就……」的能力。在 Python 裡，我們用 `if` 來寫這種判斷。今天派姨教你第一個 `if` 語句。" },
+        { "id": "concept", "title": "概念", "content": "**if 語句**（if statement）的語法：\n\n```python\nif 條件:\n    做這件事\n```\n\n注意兩個重點：\n\n1. `if` 後面要加**冒號** `:`\n2. 下一行要**縮排**（往右縮 4 個空格）\n\n縮排表示「這是 `if` 裡面的」——只有條件成立（`True`）時才會執行。Python 用縮排來分辨「哪些程式碼屬於 if 裡面」。\n\n⚠️ 常見錯誤：忘記冒號 `:` 或忘記縮排，Python 會報錯。" },
+        { "id": "demo", "title": "示範", "content": "簡單的年齡判斷：\n\n```python\nage = 65\nif age >= 60:\n    print(\"可以申請敬老卡\")\n```\n\n如果 `age` 大於等於 60，就會印出「可以申請敬老卡」。否則什麼都不印——程式會跳過縮排的那一行，直接往下繼續。\n\n> 派姨小提示：`>=` 是「大於等於」的意思，記住兩個符號的順序：先 `>` 再 `=`。" },
+        { "id": "practice", "title": "實作", "content": "寫一個變數 `age`，試試以下程式碼：\n\n```python\nage = 25\nif age >= 18:\n    print(\"已成年\")\n```\n\n1. 把 `age` 改成 10，看看「已成年」還會不會印出來\n2. 加一行 `if age < 18:`，印出「未成年」\n3. 觀察：改 `age` 的值，結果會不會跟著變" },
+        { "id": "summary", "title": "總結", "content": "`if 條件:` 後面縮排的程式碼，只有在條件成立時才會執行。記住兩個關鍵：冒號和縮排。下一課我們學 `else`——處理「否則」的情況。" }
+      ]
+    },
+    {
+      "id": "16",
+      "day": 16,
+      "title": "不只是「如果」- else",
+      "conceptGoal": "處理「否則」的情況",
+      "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "有時候我們不只想知道「如果成立就做 A」，還想知道「如果不成立就做 B」。例如：如果是奇數就印「奇數」，否則就印「偶數」。這時候就要用 `else`。" },
+        { "id": "concept", "title": "概念", "content": "**if-else**：如果不是 A 就是 B——兩條路一定會走其中一條。\n\n```python\nif 條件:\n    做 A\nelse:\n    做 B\n```\n\n只有兩條路：條件成立做 A，不成立就做 B。`else` 不需要再寫條件，因為它的意思就是「其他所有情況」。\n\n⚠️ 常見錯誤：`else` 後面也要加冒號 `:`，而且 `else` 要和 `if` 對齊（同樣的縮排層級）。" },
+        { "id": "demo", "title": "示範", "content": "奇數偶數判斷：\n\n```python\nnum = 7\nif num % 2 == 0:\n    print(\"偶數\")\nelse:\n    print(\"奇數\")\n```\n\n`%` 是「取餘數」運算子：`num % 2` 是 `num` 除以 2 的餘數。餘數是 0 就是偶數，否則就是奇數。\n\n> 派姨小提示：`%` 叫做 modulo（模運算），在程式裡很常用。想知道一個數字能不能被 N 整除，就看 `num % N == 0`。" },
+        { "id": "practice", "title": "實作", "content": "寫一個變數 `num`，用 `if-else` 判斷是奇數還是偶數：\n\n```python\nnum = 7\nif num % 2 == 0:\n    print(\"偶數\")\nelse:\n    print(\"奇數\")\n```\n\n試著改 `num` 的值（例如 8、9、10），確認結果都對。" },
+        { "id": "summary", "title": "總結", "content": "`else` 處理「否則」的情況。`if-else` 讓程式在兩條路中選一條。下一課我們學 `elif`——處理「多個可能性」。" }
+      ]
+    },
+    {
+      "id": "17",
+      "day": 17,
+      "title": "多重選擇 - elif",
+      "conceptGoal": "處理多個可能性",
+      "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "有時候不只兩種結果，而是像選擇題 A/B/C/D 一樣，有很多種可能。例如成績：90 以上優、80 以上良、60 以上及格、否則不及格。這時候要用 `elif`。" },
+        { "id": "concept", "title": "概念", "content": "**elif** 是「else if」的縮寫——「否則如果……」。\n\n```python\nif 條件1:\n    做 A\nelif 條件2:\n    做 B\nelif 條件3:\n    做 C\nelse:\n    做 D\n```\n\n程式會**從上往下**檢查，第一個成立的條件就執行對應的程式碼，然後結束整個 if-elif-else。所以**順序很重要**——先寫範圍大的還是小的會影響結果。\n\n> 派姨小提示：你可以有很多個 `elif`，但只能有一個 `if`（在最前面）和一個 `else`（在最後面，可選）。" },
+        { "id": "demo", "title": "示範", "content": "成績等級判定：\n\n```python\nscore = 85\nif score >= 90:\n    print(\"優\")\nelif score >= 80:\n    print(\"良\")\nelif score >= 60:\n    print(\"及格\")\nelse:\n    print(\"不及格\")\n```\n\n85 會印出「良」。因為 `85 >= 90` 不成立，跳到下一個 `85 >= 80` 成立，就執行「良」，然後結束。\n\n⚠️ 常見錯誤：如果你把條件順序反過來（先寫 `>= 60`），那 85 就會先被「及格」捕捉到，不會到「良」。" },
+        { "id": "practice", "title": "實作", "content": "寫一個變數 `score`，用 if-elif-else 印出等級（優/良/及格/不及格）：\n\n```python\nscore = 75\nif score >= 90:\n    print(\"優\")\nelif score >= 80:\n    print(\"良\")\nelif score >= 60:\n    print(\"及格\")\nelse:\n    print(\"不及格\")\n```\n\n試著用 95、75、55 各跑一次，確認結果都對。" },
+        { "id": "summary", "title": "總結", "content": "`elif` 處理多個可能性。從上往下檢查，第一個成立的條件就執行。記住順序很重要！下一課我們學「比較」和「邏輯」——怎麼寫出更複雜的條件。" }
+      ]
+    },
+    {
+      "id": "18",
+      "day": 18,
+      "title": "比較與邏輯",
+      "conceptGoal": "如何比較資料",
+      "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "條件裡我們常常要「比較」兩個值——誰大、誰小、相不相等。有時候還要「而且」「或者」「不是」來組合條件。今天派姨教你**比較運算子**和**邏輯運算**。" },
+        { "id": "concept", "title": "概念", "content": "**比較運算子**：\n- `>` 大於\n- `<` 小於\n- `>=` 大於等於\n- `<=` 小於等於\n- `==` 等於（注意：**兩個**等號！）\n- `!=` 不等於\n\n⚠️ 常見錯誤：等於是 `==`，一個 `=` 是「指定變數」。寫 `if age = 18:` 會報錯，要寫 `if age == 18:`。\n\n**邏輯運算**：\n- `and`（而且）：兩邊都要成立\n- `or`（或者）：任一邊成立就好\n- `not`（不是）：反轉 True/False\n\n例如：`age >= 18 and age < 65` 表示「年齡介於 18 到 65 之間」。" },
+        { "id": "demo", "title": "示範", "content": "組合條件：\n\n```python\nage = 30\nif age >= 18 and age < 65:\n    print(\"青壯年\")\n```\n\n用 `or`：\n\n```python\nscore = 95\nbonus = True\nif score >= 90 or bonus:\n    print(\"過關\")\n```\n\n用 `not`：\n\n```python\nis_rainy = False\nif not is_rainy:\n    print(\"不用帶傘\")\n```" },
+        { "id": "practice", "title": "實作", "content": "1. 寫一個條件：判斷一個數字是否「在 10 到 50 之間」（包含 10 和 50），用 `and` 把兩個條件連起來：\n\n```python\nnum = 25\nif num >= 10 and num <= 50:\n    print(\"在範圍內\")\n```\n\n2. 再試試用 `or`：「小於 0 或大於 100」就印「超出範圍」" },
+        { "id": "summary", "title": "總結", "content": "比較用 `>` `<` `==` `!=`；邏輯用 `and` `or` `not`。組合起來可以寫出各種條件。下一課開始我們用條件判斷做小專案：簡易計算機。" }
+      ]
+    },
+    {
+      "id": "19",
+      "day": 19,
+      "title": "簡易計算機",
+      "conceptGoal": "條件判斷小專案",
+      "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "派姨跟你一起做第一個「條件判斷」小專案：簡易計算機。使用者給兩個數字和一個運算子（`+` `-` `*` `/`），程式根據運算子做對應的計算並印出結果。" },
+        { "id": "concept", "title": "概念", "content": "用 `if-elif-else` 根據「運算子」決定要做哪一種運算。例如：如果 `op` 是 `\"+\"` 就加，是 `\"-\"` 就減，依此類推。\n\n這是我們第一次把「變數」「計算」「條件判斷」三個概念串在一起用——前面學過的東西都派上用場了！" },
+        { "id": "demo", "title": "示範", "content": "```python\na = 10\nb = 5\nop = \"+\"\n\nif op == \"+\":\n    print(a + b)\nelif op == \"-\":\n    print(a - b)\nelif op == \"*\":\n    print(a * b)\nelif op == \"/\":\n    print(a / b)\nelse:\n    print(\"不認識的運算子\")\n```\n\n把 `op` 改成 `\"-\"` 或 `\"*\"`，看看結果會怎麼變。\n\n⚠️ 常見錯誤：除法時 `b` 不能是 0！你可以加一個檢查：`if op == \"/\" and b == 0:`，印出「不能除以零」。" },
+        { "id": "practice", "title": "實作", "content": "1. 完成簡易計算機：用變數存兩個數字和一個運算子\n2. 用 `if-elif-else` 印出計算結果\n3. 試試 `+` `-` `*` `/` 四種\n4. 挑戰：加一個「除以零」的保護\n\n> 派姨小提示：可以之後再學「從鍵盤輸入」（`input()`）來讓 a、b、op 由使用者輸入，讓計算機變互動式的！" },
+        { "id": "summary", "title": "總結", "content": "用條件判斷可以根據使用者的選擇執行不同的計算。下一課我們做溫度轉換器。" }
+      ]
+    },
+    {
+      "id": "20",
+      "day": 20,
+      "title": "溫度轉換器",
+      "conceptGoal": "條件判斷小專案",
+      "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "攝氏和華氏怎麼換算？派姨跟你做一個小程式：判斷目前是攝氏還是華氏，然後套用對應的公式轉換。用條件判斷決定要套哪一個公式。" },
+        { "id": "concept", "title": "概念", "content": "兩個公式：\n\n- 攝氏轉華氏：`F = C * 9/5 + 32`\n- 華氏轉攝氏：`C = (F - 32) * 5/9`\n\n用一個變數 `unit` 表示「現在是攝氏還是華氏」，再用 `if-else` 選對公式。這就是「根據模式選不同行為」的經典用法。" },
+        { "id": "demo", "title": "示範", "content": "```python\nunit = \"C\"\nvalue = 30\n\nif unit == \"C\":\n    result = value * 9/5 + 32\n    print(value, \"°C =\", result, \"°F\")\nelse:\n    result = (value - 32) * 5/9\n    print(value, \"°F =\", result, \"°C\")\n```\n\n> 派姨小提示：`30°C` 轉換後應該是 `86.0°F`。你可以用 `round(result, 1)` 讓結果只顯示一位小數。" },
+        { "id": "practice", "title": "實作", "content": "完成溫度轉換器：\n\n1. 設定 `unit`（`\"C\"` 或 `\"F\"`）和 `value`\n2. 用條件判斷印出轉換後的溫度和單位\n3. 試試 `0°C`、`100°C`、`32°F` 各會變成多少\n\n⚠️ 常見錯誤：華氏轉攝氏的公式裡要先減 32 再乘，記得加括號：`(value - 32) * 5/9`。" },
+        { "id": "summary", "title": "總結", "content": "條件判斷可以根據「單位」或「模式」選不同的公式。下一課我們做 BMI 計算與建議。" }
+      ]
+    },
+    {
+      "id": "21",
+      "day": 21,
+      "title": "BMI 計算與建議",
+      "conceptGoal": "條件判斷小專案",
+      "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "BMI = 體重(kg) / 身高(m)²。算完之後，我們還可以根據數值印出「過輕」「正常」「過重」等建議。派姨跟你用 `if-elif-else` 做 BMI 計算與建議。" },
+        { "id": "concept", "title": "概念", "content": "公式：`bmi = weight / (height ** 2)`。`**` 是「次方」運算子，`height ** 2` 就是身高的平方。\n\n常見分級：\n- BMI < 18.5 → 過輕\n- 18.5 ≤ BMI < 24 → 正常\n- 24 ≤ BMI < 27 → 過重\n- BMI ≥ 27 → 肥胖\n\n用 `elif` 依序判斷就好。" },
+        { "id": "demo", "title": "示範", "content": "```python\nweight = 60\nheight = 1.6\nbmi = weight / (height ** 2)\n\nprint(\"你的 BMI 是\", round(bmi, 1))\n\nif bmi < 18.5:\n    print(\"過輕\")\nelif bmi < 24:\n    print(\"正常\")\nelif bmi < 27:\n    print(\"過重\")\nelse:\n    print(\"肥胖\")\n```\n\n> 派姨小提示：`round(bmi, 1)` 可以讓 BMI 只顯示到小數一位，看起來更清楚。" },
+        { "id": "practice", "title": "實作", "content": "1. 用你的體重和身高（或假設的數字）算出 BMI\n2. 用 `if-elif-else` 印出建議\n3. 記得身高要換成「公尺」（例如 160 公分 = 1.6）\n4. 挑戰：印出 BMI 值和建議在同一行" },
+        { "id": "summary", "title": "總結", "content": "計算加條件判斷可以做出「算完再給建議」的程式。下一課我們做密碼檢查器。" }
+      ]
+    },
+    {
+      "id": "22",
+      "day": 22,
+      "title": "密碼檢查器",
+      "conceptGoal": "條件判斷小專案",
+      "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "密碼常常有規則：例如至少要 8 個字、要包含數字、要包含大寫……。派姨跟你做一個「密碼檢查器」：給定一個密碼字串，用條件判斷印出「通過」或「不通過」以及原因。" },
+        { "id": "concept", "title": "概念", "content": "用 `len(password)` 可以取得密碼長度。我們可以用 `if len(password) >= 8` 檢查長度。\n\n`len()` 是 Python 內建函數，可以算出字串有幾個字元，也可以算列表有幾個元素。非常常用！\n\n進階可以檢查是否包含數字、大寫等（之後學迴圈或內建函數會更簡單，這裡先用簡單的長度檢查）。" },
+        { "id": "demo", "title": "示範", "content": "先做長度檢查：\n\n```python\npassword = \"abc12345\"\n\nif len(password) >= 8:\n    print(\"長度通過！密碼有\", len(password), \"個字元\")\nelse:\n    print(\"密碼至少 8 個字，目前只有\", len(password), \"個\")\n```\n\n> 派姨小提示：未來學了迴圈後，就可以做更複雜的檢查，例如「是否包含數字」「是否包含大寫字母」。" },
+        { "id": "practice", "title": "實作", "content": "1. 寫一個變數 `password`\n2. 用 `if-else` 檢查長度是否 >= 8\n3. 印出「通過」或「至少 8 個字」\n4. 試試 `\"short\"` 和 `\"longenough\"` 的結果\n5. 挑戰：加一個 `elif` 檢查長度 >= 12 就印「非常安全」" },
+        { "id": "summary", "title": "總結", "content": "條件判斷可以用來「檢查」輸入是否符合規則。`len()` 是很實用的內建函數。下一課我們做小測驗遊戲，為第二階段收尾。" }
+      ]
+    },
+    {
+      "id": "23",
+      "day": 23,
+      "title": "小測驗遊戲",
+      "conceptGoal": "條件判斷小專案",
+      "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "派姨跟你做一個超簡單的「小測驗」：程式出題（例如 3+5=?），你用變數存答案，程式用 `if` 判斷對錯並印出「答對了」或「答錯了」。這是第二階段的收尾專案！" },
+        { "id": "concept", "title": "概念", "content": "題目和正確答案用變數存。使用者答案也用變數存（先寫在程式裡）。用 `if 答案 == 正確答案` 來判斷對錯。\n\n這個小專案把第二階段學的全部串起來：\n- 變數存資料\n- 條件判斷（`if-else`）\n- 比較運算子（`==`）" },
+        { "id": "demo", "title": "示範", "content": "```python\n# 第一題\nanswer = 8\nuser_answer = 8\n\nif user_answer == answer:\n    print(\"答對了！\")\nelse:\n    print(\"答錯了，正確答案是\", answer)\n```\n\n你可以多出幾題：\n\n```python\n# 第二題\nq2_answer = \"Python\"\nq2_user = \"python\"\n\nif q2_user == q2_answer:\n    print(\"答對了！\")\nelse:\n    print(\"答錯了，正確答案是\", q2_answer)\n```\n\n⚠️ 常見錯誤：字串比較是區分大小寫的！`\"python\"` 和 `\"Python\"` 不相等。" },
+        { "id": "practice", "title": "實作", "content": "1. 做 2～3 題小測驗\n2. 每題用變數存正確答案和使用者答案\n3. 用 `if-else` 印出對錯\n4. 挑戰：加一個計分器——答對一題就 `score = score + 1`，最後印出總分\n\n> 派姨小提示：之後學了 `input()` 函數，就可以讓使用者真的從鍵盤輸入答案，變成互動式測驗！" },
+        { "id": "summary", "title": "總結", "content": "第二階段完成！你已經會用 `if`、`else`、`elif` 和比較與邏輯做選擇。下一階段我們要學「重複」——迴圈。繼續加油！" }
+      ]
+    }
+  ]
+}

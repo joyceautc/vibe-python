@@ -1,0 +1,104 @@
+{
+  "lessons": [
+    {
+      "id": "74", "day": 74, "title": "什麼是物件導向？", "conceptGoal": "理解為什麼需要 OOP", "noCode": true,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "派姨跟你說：程式變大後，函數和變數很多、難以管理。相關的資料和函數分散各處。有沒有更好的組織方式？有——**物件導向程式設計**（**OOP**，Object-Oriented Programming）。" },
+        { "id": "concept", "title": "概念", "content": "OOP 的核心思想：把程式看成「**物件**」的互動。\n\n每個物件有自己的：\n- **狀態**（資料/屬性）\n- **行為**（方法/動作）\n\n類比：一台車有屬性（顏色、速度）和行為（加速、煞車）。把相關的「資料」和「功能」組合在一起。\n\n為什麼需要 OOP？\n- 程式更**組織化**\n- 程式碼更容易**重用**\n- 更容易**擴展**和維護\n- 更貼近我們思考問題的方式" },
+        { "id": "demo", "title": "示範", "content": "想像你要管理 10 台車——每台車有顏色、速度，都要能加速、煞車。\n\n沒有 OOP：\n- `car1_color = \"紅\"`、`car1_speed = 0`\n- `car2_color = \"藍\"`、`car2_speed = 0`\n- `def accelerate_car1():`... `def accelerate_car2():`...\n\n有 OOP 就「每台車是一個物件」，用同一個模板創建，清楚多了。" },
+        { "id": "practice", "title": "實作", "content": "想一想：你生活中還有哪些「東西」有「屬性」和「行為」？\n\n- 手機：電量、品牌 → 打電話、拍照\n- 銀行帳戶：餘額、戶名 → 存款、提款\n- 書：書名、作者、頁數 → 翻頁、標記\n\n之後我們會用「類別」來定義這種東西。" },
+        { "id": "summary", "title": "總結", "content": "OOP 把相關的資料和功能組合成「物件」。下一課我們學「類別 vs 物件」——藍圖與實體。" }
+      ]
+    },
+    {
+      "id": "75", "day": 75, "title": "類別 vs 物件 - 藍圖與實體", "conceptGoal": "理解 Class 和 Object 的關係", "noCode": true,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "**類別**（Class）是「藍圖」——定義這種東西有什麼屬性和方法。**物件**（Object）是根據藍圖「做出來的實例」——每一個都有自己的資料。" },
+        { "id": "concept", "title": "概念", "content": "- **類別**（Class）：像房屋設計圖、餅乾模具\n  - 定義「這種物件」有什麼屬性和方法\n- **物件**（Object/Instance）：像實際蓋好的房子、做出來的餅乾\n  - 根據類別創建的實例，每個有自己的資料\n\n一個 `Dog` 類別 → 可以創建多隻不同的狗。每隻狗有自己的名字、年齡，但都會「叫」。\n\n> 派姨小提示：類別只寫一次，物件可以創建很多個。就像模具只做一個，餅乾可以做很多個。" },
+        { "id": "demo", "title": "示範", "content": "視覺化：\n\n```\nDog 類別（藍圖）\n├── 屬性：name, age\n└── 方法：bark()\n\n物件 1：旺財, 3 歲\n物件 2：小黑, 5 歲\n```\n\n兩隻都是「狗」，都有名字和年齡，都會叫，但資料不同。" },
+        { "id": "practice", "title": "實作", "content": "想一想：如果有一個「書」的類別，你覺得應該有哪些屬性（資料）？哪些方法（行為）？\n\n下一課我們就要用 `class` 語法寫出來了！" },
+        { "id": "summary", "title": "總結", "content": "Class 是藍圖，Object 是實例。一個類別可以創建多個物件。下一課我們學第一個類別——定義與創建。" }
+      ]
+    },
+    {
+      "id": "76", "day": 76, "title": "第一個類別 - 定義與創建", "conceptGoal": "學習 class 語法", "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "派姨教你 `class` 語法！`class Dog:` 定義類別，`__init__` 方法在創建物件時被呼叫，用來設定初始狀態。`self` 代表「自己」——這個物件。" },
+        { "id": "concept", "title": "概念", "content": "定義類別的語法：\n\n```python\nclass Dog:\n    def __init__(self, name, age):\n        self.name = name\n        self.age = age\n```\n\n- `class Dog:` — 定義一個叫 Dog 的類別\n- `__init__` — **建構子**（constructor），創建物件時自動呼叫\n- `self` — 代表「這個物件自己」\n- `self.name = name` — 把參數存成物件的屬性\n\n創建物件：`my_dog = Dog(\"旺財\", 3)`\n\n⚠️ 常見錯誤：`__init__` 前後各有**兩個**底線，不是一個！" },
+        { "id": "demo", "title": "示範", "content": "```python\nclass Dog:\n    def __init__(self, name, age):\n        self.name = name\n        self.age = age\n\n# 創建兩個物件\ndog1 = Dog(\"旺財\", 3)\ndog2 = Dog(\"小黑\", 5)\n\nprint(dog1.name, dog1.age)  # 旺財 3\nprint(dog2.name, dog2.age)  # 小黑 5\n```\n\n兩隻狗是不同的物件，各有自己的 `name` 和 `age`。" },
+        { "id": "practice", "title": "實作", "content": "寫一個 `Person` 類別：\n\n```python\nclass Person:\n    def __init__(self, name, age):\n        self.name = name\n        self.age = age\n\np = Person(\"媽媽\", 60)\nprint(p.name, p.age)\n```\n\n試試創建兩個不同的 Person。" },
+        { "id": "summary", "title": "總結", "content": "`class`、`__init__`、`self` 是 OOP 的基礎三要素。下一課我們學屬性與方法。" }
+      ]
+    },
+    {
+      "id": "77", "day": 77, "title": "屬性與方法", "conceptGoal": "物件的資料和行為", "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "**屬性**（Attributes）是物件的「資料」——例如 `dog.name`。**方法**（Methods）是物件的「行為」——例如 `dog.bark()`。方法的第一個參數一定是 `self`。" },
+        { "id": "concept", "title": "概念", "content": "**屬性**：物件的資料，用 `obj.attr` 存取。\n\n**方法**：定義在類別裡的函數，第一個參數是 `self`。呼叫時用 `obj.method()`，Python 自動把 `obj` 當成 `self` 傳進去。\n\n```python\nclass Dog:\n    def __init__(self, name):\n        self.name = name     # 屬性\n\n    def bark(self):          # 方法\n        print(self.name + \" 汪汪！\")\n```" },
+        { "id": "demo", "title": "示範", "content": "```python\nclass Dog:\n    def __init__(self, name, age):\n        self.name = name\n        self.age = age\n\n    def bark(self):\n        print(self.name + \" 汪汪！\")\n\n    def info(self):\n        print(f\"{self.name}，{self.age} 歲\")\n\nmy_dog = Dog(\"旺財\", 3)\nmy_dog.bark()  # 旺財 汪汪！\nmy_dog.info()  # 旺財，3 歲\n```" },
+        { "id": "practice", "title": "實作", "content": "在 `Person` 類別裡加一個方法 `introduce()`：\n\n```python\nclass Person:\n    def __init__(self, name, age):\n        self.name = name\n        self.age = age\n\n    def introduce(self):\n        print(f\"我是 {self.name}，今年 {self.age} 歲\")\n\np = Person(\"媽媽\", 60)\np.introduce()\n```" },
+        { "id": "summary", "title": "總結", "content": "屬性存資料，方法做行為；方法的第一個參數是 `self`。下一課我們學封裝。" }
+      ]
+    },
+    {
+      "id": "78", "day": 78, "title": "封裝 - 保護你的資料", "conceptGoal": "理解資訊隱藏", "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "派姨跟你學**封裝**（encapsulation）：保護重要資料不被外部隨意修改，而是透過方法來控制存取。就像銀行帳戶——你不能直接改餘額，要透過存款/提款。" },
+        { "id": "concept", "title": "概念", "content": "**私有屬性**：\n- `_name` — 約定俗成的「內部使用」（Python 不強制）\n- `__name` — 名稱改編（name mangling），更難從外部存取\n\n**Getter 和 Setter**：提供方法讓外部讀寫，可以加入**驗證邏輯**。\n\n```python\nclass Account:\n    def __init__(self):\n        self._balance = 0  # 私有\n\n    def get_balance(self):\n        return self._balance\n\n    def deposit(self, amount):\n        if amount > 0:\n            self._balance += amount\n```" },
+        { "id": "demo", "title": "示範", "content": "```python\nclass BankAccount:\n    def __init__(self, owner):\n        self.owner = owner\n        self._balance = 0\n\n    def deposit(self, amount):\n        if amount > 0:\n            self._balance += amount\n            print(f\"存入 {amount}，餘額 {self._balance}\")\n\n    def withdraw(self, amount):\n        if amount > self._balance:\n            print(\"餘額不足！\")\n        else:\n            self._balance -= amount\n            print(f\"提取 {amount}，餘額 {self._balance}\")\n\n    def get_balance(self):\n        return self._balance\n\nacc = BankAccount(\"媽媽\")\nacc.deposit(5000)\nacc.withdraw(1200)\nprint(\"餘額：\", acc.get_balance())\n```" },
+        { "id": "practice", "title": "實作", "content": "寫一個銀行帳戶類別：`_balance` 私有，`deposit()`、`withdraw()`、`get_balance()`。`withdraw` 時檢查餘額。" },
+        { "id": "summary", "title": "總結", "content": "封裝用私有屬性和方法保護資料、控制存取。下一課我們學繼承。" }
+      ]
+    },
+    {
+      "id": "79", "day": 79, "title": "繼承 - 重用和擴展", "conceptGoal": "理解類別之間的關係", "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "派姨跟你學**繼承**（inheritance）：子類別可以「繼承」父類別的屬性和方法。例如 `Dog` 和 `Cat` 都繼承 `Animal`——共用的部分不用重寫。" },
+        { "id": "concept", "title": "概念", "content": "- **父類別**（基礎類別）：提供共用的屬性和方法\n- **子類別**（衍生類別）：繼承父類別，可以新增或**覆寫**方法\n\n語法：`class Dog(Animal):` — Dog 繼承 Animal\n\n**覆寫**（Override）：子類別重新定義父類別的方法。\n\n```python\nclass Animal:\n    def speak(self):\n        print(\"...\")\n\nclass Dog(Animal):\n    def speak(self):  # 覆寫\n        print(\"汪汪\")\n```" },
+        { "id": "demo", "title": "示範", "content": "```python\nclass Animal:\n    def __init__(self, name):\n        self.name = name\n\n    def speak(self):\n        print(self.name + \"：...\")\n\nclass Dog(Animal):\n    def speak(self):\n        print(self.name + \"：汪汪！\")\n\nclass Cat(Animal):\n    def speak(self):\n        print(self.name + \"：喵～\")\n\ndog = Dog(\"旺財\")\ncat = Cat(\"小花\")\ndog.speak()  # 旺財：汪汪！\ncat.speak()  # 小花：喵～\n```\n\n`Dog` 和 `Cat` 都繼承了 `Animal` 的 `__init__`，但各自覆寫了 `speak`。" },
+        { "id": "practice", "title": "實作", "content": "1. 寫 `Animal` 類別有 `__init__(self, name)` 和 `speak()`\n2. 寫 `Dog(Animal)` 覆寫 `speak()` 印「汪汪」\n3. 寫 `Cat(Animal)` 覆寫 `speak()` 印「喵」\n4. 各創建一個並呼叫 `speak()`" },
+        { "id": "summary", "title": "總結", "content": "繼承讓子類別重用父類別、可覆寫方法。下一課我們學多型。" }
+      ]
+    },
+    {
+      "id": "80", "day": 80, "title": "多型 - 同一介面，不同行為", "conceptGoal": "理解多型的威力", "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "派姨跟你學**多型**（polymorphism）：不同物件對同一方法名有不同反應。都會「speak」，但狗說汪汪、貓說喵。Python 的 Duck Typing 讓這件事特別自然。" },
+        { "id": "concept", "title": "概念", "content": "**多型**：同一介面（例如 `speak()`），不同物件有不同實作。\n\n**Duck Typing**：「如果走路像鴨子、叫聲像鴨子，就當它是鴨子」。Python 不檢查型別，只檢查「有沒有這個方法」。\n\n```python\ndef make_speak(animal):\n    animal.speak()  # 不管是什麼動物，只要有 speak() 就行\n```" },
+        { "id": "demo", "title": "示範", "content": "```python\ndef make_all_speak(animals):\n    for animal in animals:\n        animal.speak()\n\nanimals = [Dog(\"旺財\"), Cat(\"小花\"), Dog(\"小黑\")]\nmake_all_speak(animals)\n# 旺財：汪汪！\n# 小花：喵～\n# 小黑：汪汪！\n```\n\n同一個函數 `make_all_speak`，處理不同類型的動物，每個會做出自己的行為。這就是多型的威力！" },
+        { "id": "practice", "title": "實作", "content": "寫 `Circle` 和 `Rectangle` 類別，各有 `area()` 方法。再寫一個函數接受形狀列表，印出每個的面積。\n\n```python\nclass Circle:\n    def __init__(self, radius):\n        self.radius = radius\n    def area(self):\n        return 3.14159 * self.radius ** 2\n\nclass Rectangle:\n    def __init__(self, w, h):\n        self.w = w\n        self.h = h\n    def area(self):\n        return self.w * self.h\n\nshapes = [Circle(5), Rectangle(3, 4), Circle(10)]\nfor s in shapes:\n    print(s.area())\n```" },
+        { "id": "summary", "title": "總結", "content": "多型讓同一介面對應不同行為。Python 的 Duck Typing 讓這件事很自然。下一課我們學組合 vs 繼承。" }
+      ]
+    },
+    {
+      "id": "81", "day": 81, "title": "組合 vs 繼承", "conceptGoal": "理解物件關係", "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "派姨跟你學兩種物件關係：**繼承**是「是一個」（is-a），**組合**是「有一個」（has-a）。車「有一個」引擎，但車不「是一個」引擎。" },
+        { "id": "concept", "title": "概念", "content": "- **繼承**（is-a）：Dog「是一種」Animal → `class Dog(Animal)`\n- **組合**（has-a）：Car「有一個」Engine → `self.engine = Engine()`\n\n一般建議：**優先使用組合**，因為更靈活。繼承適合「真正的」層級關係。\n\n> 派姨小提示：如果你猶豫用繼承還是組合，通常組合是更安全的選擇。" },
+        { "id": "demo", "title": "示範", "content": "```python\nclass Engine:\n    def start(self):\n        print(\"引擎啟動！\")\n\n    def stop(self):\n        print(\"引擎關閉\")\n\nclass Car:\n    def __init__(self, brand):\n        self.brand = brand\n        self.engine = Engine()  # 組合：Car 有一個 Engine\n\n    def start(self):\n        print(f\"{self.brand} 準備出發\")\n        self.engine.start()\n\nmy_car = Car(\"Toyota\")\nmy_car.start()\n# Toyota 準備出發\n# 引擎啟動！\n```" },
+        { "id": "practice", "title": "實作", "content": "用組合寫 `Computer` 和 `CPU`：`Computer` 有一個 `CPU`。`CPU` 有 `process()` 方法，`Computer` 的 `run()` 呼叫 `cpu.process()`。" },
+        { "id": "summary", "title": "總結", "content": "組合 has-a、繼承 is-a；優先考慮組合。下一課我們學特殊方法（dunder）。" }
+      ]
+    },
+    {
+      "id": "82", "day": 82, "title": "特殊方法 - Python 的魔法", "conceptGoal": "自訂物件行為", "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "派姨跟你學「雙下劃線方法」（dunder methods）：讓自訂物件像內建類型一樣好用！例如 `print(物件)` 時印出你想要的字串、讓物件可以 `+` 和 `==`。" },
+        { "id": "concept", "title": "概念", "content": "常用 dunder 方法：\n\n- `__str__(self)` — `print(obj)` 時呼叫\n- `__len__(self)` — `len(obj)` 時呼叫\n- `__add__(self, other)` — `obj + other` 時呼叫\n- `__eq__(self, other)` — `obj == other` 時呼叫\n\n這些方法讓你的類別融入 Python 的語法，用起來更自然。" },
+        { "id": "demo", "title": "示範", "content": "```python\nclass Vector:\n    def __init__(self, x, y):\n        self.x = x\n        self.y = y\n\n    def __str__(self):\n        return f\"({self.x}, {self.y})\"\n\n    def __add__(self, other):\n        return Vector(self.x + other.x, self.y + other.y)\n\n    def __eq__(self, other):\n        return self.x == other.x and self.y == other.y\n\nv1 = Vector(1, 2)\nv2 = Vector(3, 4)\nprint(v1)          # (1, 2)\nprint(v1 + v2)     # (4, 6)\nprint(v1 == Vector(1, 2))  # True\n```" },
+        { "id": "practice", "title": "實作", "content": "在一個類別裡加 `__str__`，讓 `print(物件)` 印出你想要的格式。有餘力加 `__eq__` 讓兩個物件可以比較。" },
+        { "id": "summary", "title": "總結", "content": "dunder 方法讓自訂物件支援內建操作，融入 Python 的語法。下一課我們學 OOP 最佳實踐。" }
+      ]
+    },
+    {
+      "id": "83", "day": 83, "title": "OOP 最佳實踐", "conceptGoal": "第七階段回顧", "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "派姨跟你學 OOP 最佳實踐，以及回顧整個第七階段。什麼時候用 OOP？怎樣設計好的類別？" },
+        { "id": "concept", "title": "概念", "content": "設計原則：\n\n- **單一職責**：一個類別只做一件事\n- **開放封閉**：開放擴展（加新類別）、封閉修改（不改舊程式碼）\n\n何時用 OOP？\n- 複雜系統建模\n- 需要重用和擴展\n- 多人協作\n\n何時不用？\n- 簡單腳本\n- 純粹的資料處理\n\n第七階段回顧：`class`、`__init__`、`self`、屬性與方法、封裝、繼承、多型、組合、dunder methods。" },
+        { "id": "demo", "title": "示範", "content": "好的設計示例——圖書管理：\n\n```python\nclass Book:\n    def __init__(self, title, author):\n        self.title = title\n        self.author = author\n\n    def __str__(self):\n        return f\"《{self.title}》by {self.author}\"\n\nclass Library:\n    def __init__(self):\n        self.books = []\n\n    def add_book(self, book):\n        self.books.append(book)\n\n    def list_books(self):\n        for book in self.books:\n            print(book)\n\nlib = Library()\nlib.add_book(Book(\"Python 入門\", \"派姨\"))\nlib.add_book(Book(\"資料結構\", \"小明\"))\nlib.list_books()\n```\n\n每個類別做一件事：`Book` 存書的資料，`Library` 管理書的集合。" },
+        { "id": "practice", "title": "實作", "content": "回顧你學過的類別，試著設計一個小系統（2-3 個類別互相合作）。例如：\n\n- 寵物店：`Pet` 類別 + `PetShop` 類別\n- 購物車：`Product` 類別 + `Cart` 類別\n\n第七階段完成！" },
+        { "id": "summary", "title": "總結", "content": "第七階段完成！你已經會 `class`、屬性方法、封裝、繼承、多型、組合、dunder methods 和 OOP 設計原則。下一階段我們做**綜合專案**——把所有學過的技能串起來。繼續加油！" }
+      ]
+    }
+  ]
+}

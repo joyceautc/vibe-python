@@ -1,0 +1,214 @@
+{
+  "lessons": [
+    {
+      "id": "39",
+      "day": 39,
+      "title": "什麼是函數？",
+      "conceptGoal": "函數是可重用的程式碼片段",
+      "noCode": true,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "派姨跟你說：寫程式寫多了，會發現同一段程式碼要寫好幾次。如果我們把「這段程式碼」取一個名字，之後只要叫這個名字就能執行，就不用複製貼上了。這就是**函數**（**function**）。" },
+        { "id": "concept", "title": "概念", "content": "**函數**是可重用的程式碼片段。\n\n類比：\n- **食譜**是一張「步驟清單」，每次要做這道菜就照食譜做\n- **遙控器按鈕**按下去就執行「開電視」的動作\n\n函數就是「給一段程式碼取名字，之後叫名字就執行」。\n\n為什麼需要函數？\n- **避免重複**：同一段程式碼不用寫很多遍\n- **易於維護**：要改只要改一個地方\n- **程式更清楚**：看名字就知道這段程式碼在做什麼" },
+        { "id": "demo", "title": "示範", "content": "先理解「可重用」的價值。想像你要印三次「你好」：\n\n沒有函數：\n\n```python\nprint(\"你好！歡迎來到 Python 花園\")\nprint(\"你好！歡迎來到 Python 花園\")\nprint(\"你好！歡迎來到 Python 花園\")\n```\n\n有函數就定義一個 `say_hello()`，然後呼叫三次。程式碼更短、更好改。" },
+        { "id": "practice", "title": "實作", "content": "想一想：你寫過的程式裡，有沒有「重複做同一件事」的地方？\n\n- 算 BMI 的公式\n- 印出分隔線\n- 判斷奇數偶數\n\n之後我們會把這些抽成函數。" },
+        { "id": "summary", "title": "總結", "content": "函數是可重用的程式碼片段，取名字後可以重複呼叫。下一課我們學 `def` 關鍵字——定義你的第一個函數。" }
+      ]
+    },
+    {
+      "id": "40",
+      "day": 40,
+      "title": "定義你的第一個函數",
+      "conceptGoal": "def 關鍵字",
+      "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "在 Python 裡我們用 `def` 來「定義」函數。定義完之後，用「函數名()」就可以「呼叫」函數，執行裡面的程式碼。派姨教你寫第一個函數！" },
+        { "id": "concept", "title": "概念", "content": "**定義函數**的語法：\n\n```python\ndef function_name():\n    做這件事\n```\n\n- `def` 後面是函數名字\n- 名字後面加**括號**和**冒號**\n- 下一行要**縮排**，表示「這是函數裡面的程式碼」\n\n**呼叫函數**：寫 `function_name()`，程式就會跳進去執行函數裡的程式碼，執行完再回來繼續。\n\n⚠️ 常見錯誤：定義函數時不會執行裡面的程式碼！只有「呼叫」時才會執行。" },
+        { "id": "demo", "title": "示範", "content": "```python\ndef say_hello():\n    print(\"你好！\")\n    print(\"歡迎來到 Python 花園\")\n\n# 呼叫函數\nsay_hello()  # 會印出兩行\nsay_hello()  # 再呼叫一次，又印兩行\n```\n\n注意：`def say_hello():` 那兩行只是「定義」，程式碼不會執行。直到 `say_hello()` 被呼叫才執行。\n\n> 派姨小提示：函數名字的命名習慣跟變數一樣——用小寫字母和底線，例如 `say_hello`、`calculate_bmi`。" },
+        { "id": "practice", "title": "實作", "content": "定義一個函數 `greet()`，裡面印出兩行：\n\n```python\ndef greet():\n    print(\"派姨跟你說：加油！\")\n    print(\"今天也要繼續努力\")\n\ngreet()\ngreet()\n```\n\n確認呼叫兩次會印出四行。" },
+        { "id": "summary", "title": "總結", "content": "`def 函數名():` 定義函數，`函數名()` 呼叫函數。記住：定義不執行，呼叫才執行。下一課我們學「參數」——讓函數更靈活。" }
+      ]
+    },
+    {
+      "id": "41",
+      "day": 41,
+      "title": "函數的輸入 - 參數",
+      "conceptGoal": "讓函數更靈活",
+      "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "如果函數可以「接收輸入」，就更靈活了。例如 `greet(\"媽媽\")` 印「媽媽你好」，`greet(\"小明\")` 印「小明你好」。這種「輸入」叫**參數**（**parameter**）。" },
+        { "id": "concept", "title": "概念", "content": "**參數**就像「設定」——呼叫時傳進去，函數裡就可以用。\n\n```python\ndef greet(name):\n    print(name + \"，你好！\")\n```\n\n- `name` 是**參數**，定義在括號裡\n- 呼叫時 `greet(\"媽媽\")`，`name` 就會是 `\"媽媽\"`\n- 呼叫時 `greet(\"小明\")`，`name` 就會是 `\"小明\"`\n\n函數可以有多個參數，用逗號隔開：\n\n```python\ndef greet(name, greeting):\n    print(greeting + \"，\" + name + \"！\")\n```\n\n> 派姨小提示：「參數」（parameter）是定義時的名字，「引數」（argument）是呼叫時傳入的值。不過日常口語常常混用，不用太在意。" },
+        { "id": "demo", "title": "示範", "content": "```python\ndef greet(name):\n    print(name + \"，你好！\")\n\ngreet(\"媽媽\")   # 媽媽，你好！\ngreet(\"小明\")   # 小明，你好！\ngreet(\"派姨\")   # 派姨，你好！\n```\n\n同一個函數，傳入不同的值就有不同的結果——這就是參數的威力。" },
+        { "id": "practice", "title": "實作", "content": "改寫 `greet` 函數：接受一個參數 `name`，印出「name，派姨跟你說加油！」\n\n```python\ndef greet(name):\n    print(name + \"，派姨跟你說加油！\")\n\ngreet(\"媽媽\")\ngreet(\"小明\")\n```\n\n挑戰：加第二個參數 `message`，讓訊息也能自訂。" },
+        { "id": "summary", "title": "總結", "content": "參數讓函數可以接收輸入，同一個函數可以處理不同的值。下一課我們學 `return`——函數的輸出。" }
+      ]
+    },
+    {
+      "id": "42",
+      "day": 42,
+      "title": "函數的輸出 - return",
+      "conceptGoal": "函數可以「回傳」結果",
+      "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "函數除了「做一件事」（例如印出），還可以「算出一個結果」並**回傳**給呼叫的人。用 `return` 回傳結果。呼叫的人可以把結果存進變數繼續使用。" },
+        { "id": "concept", "title": "概念", "content": "**return** 的意義：函數執行到 `return` 時會**立刻結束**，並把後面的值「傳回去」給呼叫的人。\n\n```python\ndef add(a, b):\n    return a + b\n\nresult = add(3, 5)  # result 是 8\n```\n\n`print` vs `return`：\n- `print` 是「印在螢幕上」，呼叫者拿不到值\n- `return` 是「傳回去」，呼叫者可以存起來、繼續計算\n\n⚠️ 常見錯誤：如果函數沒有 `return`，它會回傳 `None`（空值）。" },
+        { "id": "demo", "title": "示範", "content": "```python\ndef add(a, b):\n    return a + b\n\nresult = add(3, 5)\nprint(result)  # 8\n\n# 可以直接用在計算裡\ntotal = add(10, 20) + add(30, 40)\nprint(total)  # 100\n```\n\n> 派姨小提示：一個函數可以有多個 `return`（例如在 `if-else` 裡），但每次呼叫只會執行到**一個** `return`。" },
+        { "id": "practice", "title": "實作", "content": "1. 寫一個函數 `double(n)`，回傳 `n * 2`：\n\n```python\ndef double(n):\n    return n * 2\n\nprint(double(5))   # 10\nprint(double(100)) # 200\n```\n\n2. 再寫一個 `multiply(a, b)` 回傳 `a * b`，試試 `multiply(4, 7)`" },
+        { "id": "summary", "title": "總結", "content": "`return` 讓函數可以「輸出」一個值給呼叫的人。`print` 只是印出，`return` 是真正傳回去。下一課我們學「函數呼叫函數」——組合使用。" }
+      ]
+    },
+    {
+      "id": "43",
+      "day": 43,
+      "title": "組合使用函數",
+      "conceptGoal": "函數呼叫函數、建立函數庫",
+      "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "函數裡面可以再呼叫別的函數。我們可以把小函數組合成大函數，就像「工具箱」——每個工具做一件事，需要時拿出來用。派姨跟你做「組合使用函數」的練習。" },
+        { "id": "concept", "title": "概念", "content": "**函數呼叫函數**：例如 `main()` 裡面呼叫 `greet()` 和 `add()`。\n\n**建立函數庫**：把相關的函數放在同一個檔案裡，需要時呼叫。這樣程式會分成「高層流程」和「底層工具」。\n\n```python\ndef add(a, b):\n    return a + b\n\ndef triple_sum(x, y, z):\n    return add(add(x, y), z)\n```\n\n`triple_sum` 呼叫了 `add` 兩次——先加前兩個，再加第三個。函數就像積木，可以組合出更複雜的功能。" },
+        { "id": "demo", "title": "示範", "content": "```python\ndef add(a, b):\n    return a + b\n\ndef triple_sum(x, y, z):\n    return add(add(x, y), z)\n\nprint(triple_sum(1, 2, 3))  # 6\nprint(triple_sum(10, 20, 30))  # 60\n```\n\n> 派姨小提示：好的程式設計就像做菜——先把每個步驟（洗菜、切菜、炒菜）寫成函數，最後一個主函數把它們串起來。" },
+        { "id": "practice", "title": "實作", "content": "寫兩個函數：\n\n```python\ndef square(n):\n    return n * n\n\ndef sum_of_squares(a, b):\n    return square(a) + square(b)\n\nprint(sum_of_squares(3, 4))  # 9 + 16 = 25\n```\n\n試試 `sum_of_squares(5, 12)`，應該得到 169。" },
+        { "id": "summary", "title": "總結", "content": "函數可以呼叫函數，可以組合成「工具箱」。好的程式就是「很多小函數組合起來」。下一課開始我們用函數做小專案：個人工具庫。" }
+      ]
+    },
+    {
+      "id": "44",
+      "day": 44,
+      "title": "個人工具庫",
+      "conceptGoal": "函數小專案",
+      "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "派姨跟你把常用的計算（例如 BMI、溫度轉換）寫成函數，放在一起當「個人工具庫」。需要時呼叫函數就好，不用重複寫公式。" },
+        { "id": "concept", "title": "概念", "content": "把前面做過的「計算」抽成函數：\n\n- `bmi(weight, height)` — 計算 BMI\n- `c2f(celsius)` — 攝氏轉華氏\n- `f2c(fahrenheit)` — 華氏轉攝氏\n\n同一個檔案裡定義多個函數，就是一個小工具庫。之後你隨時可以拿出來用！" },
+        { "id": "demo", "title": "示範", "content": "```python\ndef bmi(weight, height):\n    return round(weight / (height ** 2), 1)\n\ndef c2f(celsius):\n    return celsius * 9/5 + 32\n\ndef f2c(fahrenheit):\n    return (fahrenheit - 32) * 5/9\n\n# 使用工具庫\nprint(\"BMI:\", bmi(60, 1.6))\nprint(\"30°C =\", c2f(30), \"°F\")\nprint(\"86°F =\", round(f2c(86), 1), \"°C\")\n```" },
+        { "id": "practice", "title": "實作", "content": "寫 2～3 個你覺得有用的函數。例如：\n\n1. `bmi(weight, height)` — 回傳 BMI 值\n2. `c2f(c)` — 攝氏轉華氏\n3. `circle_area(radius)` — 圓面積（`3.14159 * radius ** 2`）\n\n在下面呼叫它們並印出結果。\n\n> 派姨小提示：函數名字要有意義！看到 `bmi` 就知道是算 BMI，看到 `c2f` 就知道是攝氏轉華氏。" },
+        { "id": "summary", "title": "總結", "content": "工具庫就是「一堆函數放一起」。把常用的計算寫成函數，隨時拿出來用。下一課我們做文字處理器。" }
+      ]
+    },
+    {
+      "id": "45",
+      "day": 45,
+      "title": "文字處理器",
+      "conceptGoal": "函數小專案",
+      "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "派姨跟你做「文字處理」函數：例如把字串轉大寫、算字數、或把一句話拆成單字。字串處理在真實程式裡非常常用！" },
+        { "id": "concept", "title": "概念", "content": "Python 的字串有很多內建**方法**（method）：\n\n- `.upper()` — 轉大寫\n- `.lower()` — 轉小寫\n- `.split()` — 用空格拆成列表\n- `.strip()` — 去掉頭尾的空白\n- `len(s)` — 字串長度\n\n我們可以把這些包成函數，加上自己的邏輯。例如：「算一句話有幾個英文單字」。" },
+        { "id": "demo", "title": "示範", "content": "```python\ndef word_count(sentence):\n    words = sentence.split()\n    return len(words)\n\ndef first_word(sentence):\n    words = sentence.split()\n    if len(words) > 0:\n        return words[0]\n    return \"\"\n\nprint(word_count(\"hello world foo\"))  # 3\nprint(first_word(\"Python is fun\"))    # Python\n```\n\n> 派姨小提示：`.split()` 不給引數時會用空格拆分，非常方便。如果要用逗號拆，寫 `.split(\",\")`。" },
+        { "id": "practice", "title": "實作", "content": "寫兩個函數：\n\n1. `word_count(s)` — 接受一句話，回傳有幾個單字\n2. `first_word(s)` — 接受一句話，回傳第一個單字\n\n```python\ndef word_count(s):\n    return len(s.split())\n\nprint(word_count(\"I love Python\"))  # 3\n```\n\n挑戰：寫一個 `shout(s)` 把字串變成全大寫加驚嘆號。" },
+        { "id": "summary", "title": "總結", "content": "函數可以包裝字串處理邏輯。`.split()`、`.upper()`、`len()` 是常用的字串工具。下一課我們做簡易記帳程式。" }
+      ]
+    },
+    {
+      "id": "46",
+      "day": 46,
+      "title": "簡易記帳程式",
+      "conceptGoal": "函數小專案",
+      "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "派姨跟你用函數做「記帳」：`add_income(amount)` 加一筆收入、`add_expense(amount)` 加一筆支出、`get_balance()` 查看餘額。用變數存總餘額，函數負責更新。" },
+        { "id": "concept", "title": "概念", "content": "這個專案用到一個新概念：**global 變數**。\n\n函數裡面預設只能「讀」外面的變數，不能「改」。如果要改，要加 `global` 關鍵字：\n\n```python\nbalance = 0\n\ndef add_income(n):\n    global balance\n    balance = balance + n\n```\n\n`global balance` 告訴 Python：這個 `balance` 是外面的那個，不是新的。\n\n> 派姨小提示：`global` 用太多會讓程式變難讀。之後學「類別」（class）就有更好的方式。" },
+        { "id": "demo", "title": "示範", "content": "```python\nbalance = 0\n\ndef add_income(amount):\n    global balance\n    balance = balance + amount\n    print(\"收入 +\" + str(amount) + \"，餘額：\" + str(balance))\n\ndef add_expense(amount):\n    global balance\n    balance = balance - amount\n    print(\"支出 -\" + str(amount) + \"，餘額：\" + str(balance))\n\ndef get_balance():\n    return balance\n\nadd_income(5000)\nadd_expense(1200)\nadd_expense(800)\nprint(\"目前餘額：\", get_balance())\n```" },
+        { "id": "practice", "title": "實作", "content": "1. 用 `balance = 0` 開始\n2. 寫 `add_income(n)` 和 `add_expense(n)`\n3. 寫 `get_balance()` 回傳餘額\n4. 呼叫幾次後印出餘額\n\n⚠️ 常見錯誤：忘記 `global balance` 會讓函數裡的 `balance` 變成一個新的局部變數，不會真的更新外面的 `balance`。" },
+        { "id": "summary", "title": "總結", "content": "函數可以封裝「狀態更新」邏輯。`global` 讓函數能修改外部變數。下一課我們做遊戲框架。" }
+      ]
+    },
+    {
+      "id": "47",
+      "day": 47,
+      "title": "遊戲框架",
+      "conceptGoal": "函數小專案",
+      "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "派姨跟你用函數搭一個「遊戲框架」：把遊戲拆成 `start_game()`、`play_turn()`、`is_game_over()`、`print_result()`。先做簡化版，建立「用函數組織流程」的思維。" },
+        { "id": "concept", "title": "概念", "content": "把「開始」「玩一輪」「檢查是否結束」「印結果」拆成函數。主程式只要呼叫這些函數，結構會很清楚：\n\n```python\ndef main():\n    start_game()\n    while not is_game_over():\n        play_turn()\n    print_result()\n```\n\n這就是「**自頂向下**」的設計方式——先想大流程，再填每個函數的細節。" },
+        { "id": "demo", "title": "示範", "content": "```python\nturn_count = 0\nmax_turns = 3\n\ndef start_game():\n    print(\"=== 遊戲開始 ===\")\n\ndef play_turn():\n    global turn_count\n    turn_count = turn_count + 1\n    print(\"第\", turn_count, \"回合\")\n\ndef is_game_over():\n    return turn_count >= max_turns\n\ndef print_result():\n    print(\"=== 遊戲結束，共\", turn_count, \"回合 ===\")\n\n# 主流程\nstart_game()\nwhile not is_game_over():\n    play_turn()\nprint_result()\n```" },
+        { "id": "practice", "title": "實作", "content": "1. 寫 `start_game()` 印出歡迎訊息\n2. 寫 `play_turn()` 印出「玩一輪」\n3. 寫 `is_game_over()` 回傳 `True`/`False`\n4. 把主流程串起來\n\n> 派姨小提示：先讓每個函數只印一行，確認流程跑得通，再慢慢加入真的遊戲邏輯。" },
+        { "id": "summary", "title": "總結", "content": "遊戲框架就是「把流程拆成函數」。自頂向下設計：先想大流程，再填細節。下一課我們做資料分析工具。" }
+      ]
+    },
+    {
+      "id": "48",
+      "day": 48,
+      "title": "資料分析工具",
+      "conceptGoal": "函數小專案",
+      "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "派姨跟你把「統計」寫成函數：`mean(nums)` 算平均、`max_of(nums)` 找最大、`min_of(nums)` 找最小。接受一個數字列表，回傳一個值。" },
+        { "id": "concept", "title": "概念", "content": "把之前在迴圈階段學的統計方法包裝成函數：\n\n- `mean(nums)` — 回傳平均值\n- `max_of(nums)` — 回傳最大值\n- `min_of(nums)` — 回傳最小值\n\n我們自己寫一遍而不用內建的 `sum()`、`max()`，這樣才能真正理解函數如何封裝邏輯。\n\n> 派姨小提示：Python 內建有 `sum()`、`max()`、`min()`，實際工作中直接用就好。自己寫是為了學習！" },
+        { "id": "demo", "title": "示範", "content": "```python\ndef mean(nums):\n    total = 0\n    for n in nums:\n        total = total + n\n    return total / len(nums)\n\ndef max_of(nums):\n    result = nums[0]\n    for n in nums:\n        if n > result:\n            result = n\n    return result\n\ndef min_of(nums):\n    result = nums[0]\n    for n in nums:\n        if n < result:\n            result = n\n    return result\n\ndata = [85, 92, 78, 90, 65, 88]\nprint(\"平均：\", round(mean(data), 1))\nprint(\"最高：\", max_of(data))\nprint(\"最低：\", min_of(data))\n```" },
+        { "id": "practice", "title": "實作", "content": "1. 寫 `mean(nums)` — 用迴圈累加再除\n2. 寫 `max_of(nums)` — 用迴圈找最大（不用內建 `max`）\n3. 試一個列表印出 mean 和 max_of\n\n挑戰：寫 `median(nums)`（中位數）：先排序再取中間值。" },
+        { "id": "summary", "title": "總結", "content": "函數可以封裝「資料分析」邏輯。把迴圈包進函數，呼叫時只要一行就完成計算。下一課我們做函數綜合練習（一）。" }
+      ]
+    },
+    {
+      "id": "49",
+      "day": 49,
+      "title": "函數綜合練習（一）",
+      "conceptGoal": "參數與 return 整合",
+      "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "派姨跟你做「參數與 return」的綜合練習：多參數、多個 return 路徑、條件 return、回傳多個值。" },
+        { "id": "concept", "title": "概念", "content": "函數的進階用法：\n\n**多參數**：`def f(a, b, c):` — 可以接受多個輸入\n\n**條件 return**：用 `if-else` 決定回傳什麼\n\n```python\ndef abs_val(n):\n    if n >= 0:\n        return n\n    return -n\n```\n\n**回傳多個值**：用逗號回傳 tuple\n\n```python\ndef min_max(a, b):\n    if a < b:\n        return a, b\n    return b, a\n\nsmall, big = min_max(5, 3)  # small=3, big=5\n```" },
+        { "id": "demo", "title": "示範", "content": "```python\ndef min_max(a, b):\n    if a < b:\n        return a, b\n    return b, a\n\nx, y = min_max(5, 3)\nprint(\"較小：\", x)  # 3\nprint(\"較大：\", y)  # 5\n\n# 三個數中找最大\ndef max_of_three(a, b, c):\n    result = a\n    if b > result:\n        result = b\n    if c > result:\n        result = c\n    return result\n\nprint(max_of_three(10, 25, 18))  # 25\n```" },
+        { "id": "practice", "title": "實作", "content": "1. 寫一個函數接受兩個數字，回傳「較小者, 較大者」\n2. 再寫一個接受三個數字，回傳最大的那個\n\n```python\ndef min_max(a, b):\n    if a < b:\n        return a, b\n    return b, a\n\nsmall, big = min_max(10, 3)\nprint(small, big)  # 3 10\n```" },
+        { "id": "summary", "title": "總結", "content": "多參數、條件 return、回傳多值都是函數的進階用法。掌握這些就能寫出靈活的函數！下一課我們做函數綜合練習（二）。" }
+      ]
+    },
+    {
+      "id": "50",
+      "day": 50,
+      "title": "函數綜合練習（二）",
+      "conceptGoal": "多函數協作",
+      "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "派姨跟你做「多函數協作」：一個函數呼叫另一個，或好幾個函數一起完成一件事。這是寫好程式的關鍵能力！" },
+        { "id": "concept", "title": "概念", "content": "好的程式架構：\n\n```\nmain() → 高層流程\n├── get_data()    → 取得資料\n├── process(data) → 處理資料\n└── display(result) → 顯示結果\n```\n\n主函數 `main()` 負責「指揮」，底層函數各自做一件事。這樣每個函數都很短、很好懂、很好測試。" },
+        { "id": "demo", "title": "示範", "content": "```python\ndef get_data():\n    return [1, 2, 3, 4, 5]\n\ndef process(data):\n    result = []\n    for x in data:\n        result.append(x * 2)\n    return result\n\ndef display(result):\n    print(\"處理後的資料：\", result)\n\ndef main():\n    data = get_data()\n    result = process(data)\n    display(result)\n\nmain()\n```\n\n輸出：`處理後的資料： [2, 4, 6, 8, 10]`" },
+        { "id": "practice", "title": "實作", "content": "寫三個函數：\n\n1. `get_numbers()` — 回傳一個數字列表\n2. `process(nums)` — 回傳每個數加 10 的列表\n3. `main()` — 呼叫兩者並印出結果\n\n```python\ndef get_numbers():\n    return [5, 10, 15, 20]\n\ndef process(nums):\n    result = []\n    for n in nums:\n        result.append(n + 10)\n    return result\n\ndef main():\n    nums = get_numbers()\n    result = process(nums)\n    print(result)\n\nmain()\n```" },
+        { "id": "summary", "title": "總結", "content": "多函數協作讓程式模組化——每個函數做一件事，組合起來完成大任務。下一課我們做函數綜合練習（三）。" }
+      ]
+    },
+    {
+      "id": "51",
+      "day": 51,
+      "title": "函數綜合練習（三）",
+      "conceptGoal": "除錯與重構",
+      "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "派姨跟你練習兩件重要的事：**除錯**（debug）——函數出錯時怎麼找原因；**重構**（refactor）——把重複的程式碼抽成函數。" },
+        { "id": "concept", "title": "概念", "content": "**除錯技巧**：\n\n1. 看 **traceback** 最後一行——告訴你是哪一行出錯\n2. 在函數裡用 `print()` 印出變數值，確認每一步是否正確\n3. 把大問題拆成小問題，一段一段測試\n\n**重構技巧**：\n\n1. 看到兩段很像的程式碼 → 抽成一個函數\n2. 不同的部分用「參數」傳入\n3. 改完後執行確認結果一樣\n\n> 派姨小提示：「先讓程式跑起來，再讓程式變漂亮」——重構是讓程式更好讀、更好維護的過程。" },
+        { "id": "demo", "title": "示範", "content": "重構前（重複的程式碼）：\n\n```python\n# 印出分隔線\nprint(\"=\" * 20)\nprint(\"第一段內容\")\nprint(\"=\" * 20)\nprint(\"第二段內容\")\nprint(\"=\" * 20)\n```\n\n重構後（抽成函數）：\n\n```python\ndef separator():\n    print(\"=\" * 20)\n\nseparator()\nprint(\"第一段內容\")\nseparator()\nprint(\"第二段內容\")\nseparator()\n```\n\n更好的版本（參數化）：\n\n```python\ndef separator(char=\"=\", length=20):\n    print(char * length)\n\nseparator()          # ====================\nseparator(\"-\", 30)   # ------------------------------\n```" },
+        { "id": "practice", "title": "實作", "content": "1. 選一個你寫過的程式\n2. 找出「重複兩次以上」的片段\n3. 抽成一個函數\n4. 改呼叫函數\n5. 執行確認結果一樣\n\n⚠️ 常見錯誤：重構時如果改了函數的回傳值或參數，記得同步更新所有呼叫的地方！" },
+        { "id": "summary", "title": "總結", "content": "除錯看錯誤訊息和用 `print` 檢查；重構把重複的程式碼抽成函數。這兩個技能會一直用到！下一課我們做函數綜合練習（四）。" }
+      ]
+    },
+    {
+      "id": "52",
+      "day": 52,
+      "title": "函數綜合練習（四）",
+      "conceptGoal": "實戰題目",
+      "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "派姨出實戰題：用函數寫「判斷質數」「階乘」「費氏數列第 n 項」。把邏輯包在函數裡，主程式只管呼叫。" },
+        { "id": "concept", "title": "概念", "content": "三道經典題目：\n\n1. **判斷質數** `is_prime(n)` — 回傳 `True`/`False`\n2. **階乘** `factorial(n)` — 回傳 n!（n × (n-1) × ... × 1）\n3. **費氏數列** `fib(n)` — 回傳第 n 項\n\n階乘和費氏可以用**遞迴**（函數呼叫自己）來寫，也可以用迴圈。遞迴的概念：\n\n```\nfactorial(5) = 5 × factorial(4)\nfactorial(4) = 4 × factorial(3)\n...\nfactorial(1) = 1  ← 終止條件\n```" },
+        { "id": "demo", "title": "示範", "content": "```python\ndef is_prime(n):\n    if n < 2:\n        return False\n    for i in range(2, n):\n        if n % i == 0:\n            return False\n    return True\n\ndef factorial(n):\n    if n <= 1:\n        return 1\n    return n * factorial(n - 1)\n\nprint(is_prime(7))    # True\nprint(is_prime(10))   # False\nprint(factorial(5))   # 120\n```\n\n⚠️ 常見錯誤：遞迴一定要有**終止條件**（base case），不然會無限呼叫自己直到程式崩潰。" },
+        { "id": "practice", "title": "實作", "content": "1. 寫 `is_prime(n)` 回傳是否質數\n2. 寫 `factorial(n)` 回傳 n!\n3. 各試幾個數字印出結果\n\n```python\nfor i in range(1, 20):\n    if is_prime(i):\n        print(i, \"是質數\")\n\nprint(\"5! =\", factorial(5))   # 120\nprint(\"10! =\", factorial(10)) # 3628800\n```\n\n挑戰：寫 `fib(n)` 回傳費氏數列第 n 項。" },
+        { "id": "summary", "title": "總結", "content": "函數可以封裝複雜邏輯——質數判斷、階乘、遞迴都行。下一課我們做第四階段回顧。" }
+      ]
+    },
+    {
+      "id": "53",
+      "day": 53,
+      "title": "函數綜合練習（五）",
+      "conceptGoal": "第四階段回顧",
+      "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "派姨跟你擊掌！第四階段「組織你的程式」收尾。讓我們回顧 `def`、參數、`return`、函數呼叫函數、工具庫，然後做一個完整的小專案。" },
+        { "id": "concept", "title": "概念", "content": "回顧：\n\n- `def` 定義函數\n- 括號內放**參數**——讓函數接收輸入\n- `return` **回傳值**——讓函數輸出結果\n- 函數可以呼叫函數——組合成工具箱\n- 多個函數放一起就是**工具庫**\n- `global` 讓函數修改外部變數（少用為妙）\n- **遞迴**——函數呼叫自己\n\n你已經學會了程式設計中最重要的概念之一——「函數化思維」：把問題拆成小塊，每塊用一個函數解決。" },
+        { "id": "demo", "title": "示範", "content": "完整小專案——成績分析工具：\n\n```python\ndef get_scores():\n    return [85, 92, 78, 90, 65, 88, 95, 72]\n\ndef average(nums):\n    total = 0\n    for n in nums:\n        total = total + n\n    return total / len(nums)\n\ndef grade(score):\n    if score >= 90:\n        return \"優\"\n    elif score >= 80:\n        return \"良\"\n    elif score >= 60:\n        return \"及格\"\n    return \"不及格\"\n\ndef main():\n    scores = get_scores()\n    avg = average(scores)\n    print(\"平均分：\", round(avg, 1))\n    for s in scores:\n        print(s, \"->\", grade(s))\n\nmain()\n```" },
+        { "id": "practice", "title": "實作", "content": "自己出題：寫 2～3 個你覺得有用的函數（計算、文字、或遊戲），組成一個小工具庫。\n\n例如：\n- 溫度轉換工具庫\n- 字串處理工具庫\n- 數學計算工具庫\n\n第四階段完成！" },
+        { "id": "summary", "title": "總結", "content": "第四階段完成！你已經會定義函數、傳參數、回傳值、組合使用、除錯與重構。下一階段我們學**資料結構**——列表、字典、元組、集合。繼續加油！" }
+      ]
+    }
+  ]
+}

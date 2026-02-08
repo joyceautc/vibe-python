@@ -1,0 +1,144 @@
+{
+  "lessons": [
+    {
+      "id": "54",
+      "day": 54,
+      "title": "列表操作大全",
+      "conceptGoal": "新增、刪除、修改、切片、列表方法",
+      "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "派姨跟你把「列表」的常用操作練熟！之前我們學了建立列表和用 `for` 走訪，今天來看更多操作：新增、刪除、修改、切片（slicing）、以及常用方法。" },
+        { "id": "concept", "title": "概念", "content": "列表的常用操作：\n\n- **新增**：`lst.append(x)` 加到尾巴、`lst.insert(i, x)` 插到第 i 個位置\n- **刪除**：`lst.remove(x)` 移除第一個 x、`lst.pop(i)` 移除第 i 個並回傳\n- **修改**：`lst[i] = x` 直接改\n- **切片**：`lst[開始:結束]` 取一段、`lst[::步長]` 每隔幾個取一個\n- **其他**：`len(lst)` 長度、`lst.sort()` 排序、`lst.reverse()` 反轉\n\n⚠️ 常見錯誤：`lst.sort()` 會**直接修改**列表，不會回傳新的。如果要保留原本的，用 `sorted(lst)`。" },
+        { "id": "demo", "title": "示範", "content": "```python\nlst = [1, 2, 3]\nlst.append(4)      # [1, 2, 3, 4]\nlst.insert(1, 10)  # [1, 10, 2, 3, 4]\nlst[0] = 99        # [99, 10, 2, 3, 4]\nlst.remove(10)     # [99, 2, 3, 4]\n\n# 切片\nprint(lst[1:3])    # [2, 3]\nprint(lst[::2])    # [99, 3] — 每隔一個取\nprint(lst[::-1])   # [4, 3, 2, 99] — 反轉\n```\n\n> 派姨小提示：切片 `lst[a:b]` 包含 a 不包含 b，跟 `range(a, b)` 一樣。" },
+        { "id": "practice", "title": "實作", "content": "1. 建立一個列表 `[10, 20, 30, 40, 50]`\n2. 練習 `append`、修改某個位置\n3. 用切片取前三個\n4. 用 `[::-1]` 把列表反轉" },
+        { "id": "summary", "title": "總結", "content": "列表可以動態增刪改，切片可以取一段或反轉。下一課我們學二維列表。" }
+      ]
+    },
+    {
+      "id": "55",
+      "day": 55,
+      "title": "二維列表",
+      "conceptGoal": "列表中的列表、表格資料",
+      "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "列表裡可以再放列表——例如 `[[1,2],[3,4]]` 像一個 2×2 的表格。這種「列表中的列表」叫**二維列表**，常用來存表格資料。" },
+        { "id": "concept", "title": "概念", "content": "**二維列表**：`grid[i][j]` 表示第 i 行第 j 列。\n\n走訪用**巢狀迴圈**：\n\n```python\nfor row in grid:\n    for cell in row:\n        print(cell)\n```\n\n常見用途：表格、棋盤、座位表、成績表。" },
+        { "id": "demo", "title": "示範", "content": "```python\ngrid = [\n    [1, 2, 3],\n    [4, 5, 6],\n    [7, 8, 9]\n]\n\nprint(grid[0][1])  # 2（第 0 行第 1 列）\nprint(grid[2][2])  # 9（第 2 行第 2 列）\n\n# 走訪並印出\nfor row in grid:\n    for cell in row:\n        print(cell, end=\" \")\n    print()  # 換行\n```\n\n輸出：\n\n```\n1 2 3\n4 5 6\n7 8 9\n```" },
+        { "id": "practice", "title": "實作", "content": "1. 建立 3×3 的二維列表\n2. 用巢狀迴圈印出每一個元素\n3. 試試取「對角線」元素：`grid[0][0]`、`grid[1][1]`、`grid[2][2]`" },
+        { "id": "summary", "title": "總結", "content": "二維列表可以存表格，用 `grid[i][j]` 存取、用巢狀迴圈走訪。下一課我們學列表推導式。" }
+      ]
+    },
+    {
+      "id": "56",
+      "day": 56,
+      "title": "列表推導式",
+      "conceptGoal": "優雅的寫法、效能優勢",
+      "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "「把一個列表變成另一個列表」很常見，例如每個數乘 2。Python 有**列表推導式**（list comprehension）：一行就搞定，又清楚又快。" },
+        { "id": "concept", "title": "概念", "content": "語法：`[運算式 for 變數 in 可迭代]`\n\n```python\nsquares = [x * x for x in range(1, 6)]\n# [1, 4, 9, 16, 25]\n```\n\n可以加條件過濾：`[x for x in nums if x > 0]`\n\n```python\nevens = [x for x in range(10) if x % 2 == 0]\n# [0, 2, 4, 6, 8]\n```\n\n列表推導式比 `for` 迴圈 + `append` 更簡潔，效能通常也更好。" },
+        { "id": "demo", "title": "示範", "content": "```python\nnums = [1, 2, 3, 4, 5]\n\n# 每個數的平方\nsquares = [x * x for x in nums]\nprint(squares)  # [1, 4, 9, 16, 25]\n\n# 只保留偶數\nevens = [x for x in nums if x % 2 == 0]\nprint(evens)  # [2, 4]\n\n# 字串處理\nnames = [\"Alice\", \"Bob\", \"Charlie\"]\nupper_names = [name.upper() for name in names]\nprint(upper_names)  # ['ALICE', 'BOB', 'CHARLIE']\n```\n\n> 派姨小提示：列表推導式很好用，但如果邏輯太複雜（超過一行難讀懂），還是用 `for` 迴圈比較清楚。" },
+        { "id": "practice", "title": "實作", "content": "1. 用列表推導式把 `[1,2,3,4,5]` 變成每個數加 10：`[x+10 for x in nums]`\n2. 變成「只保留偶數」的列表\n3. 挑戰：把一個字串列表全部轉小寫" },
+        { "id": "summary", "title": "總結", "content": "列表推導式 `[expr for x in iterable]` 簡潔有力。加 `if` 可以過濾。下一課我們學字典。" }
+      ]
+    },
+    {
+      "id": "57",
+      "day": 57,
+      "title": "字典的概念",
+      "conceptGoal": "用「名字」找資料",
+      "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "列表用「位置」（0, 1, 2…）找資料；**字典**用「名字」（鍵 key）找資料。就像真正的字典：用「單字」查「解釋」。" },
+        { "id": "concept", "title": "概念", "content": "**字典**（**dict**）：用大括號 `{}` 建立，裡面是**鍵值對**（key-value pair）。\n\n```python\nperson = {\"name\": \"媽媽\", \"age\": 60}\n```\n\n- 用 `d[\"name\"]` 取值\n- 用 `d.get(\"name\")` 取值（比較安全，找不到回傳 `None` 而不是報錯）\n- 鍵不能重複，值可以是任何型別\n\n⚠️ 常見錯誤：用 `d[\"不存在的key\"]` 會報 `KeyError`。用 `d.get(\"key\")` 比較安全。" },
+        { "id": "demo", "title": "示範", "content": "```python\nperson = {\n    \"name\": \"媽媽\",\n    \"age\": 60,\n    \"motto\": \"活到老學到老\"\n}\n\nprint(person[\"name\"])       # 媽媽\nprint(person.get(\"age\"))    # 60\nprint(person.get(\"email\"))  # None（不會報錯）\n```\n\n> 派姨小提示：字典的鍵通常是字串，但也可以是數字或 tuple。值可以是任何東西——數字、字串、列表、甚至另一個字典！" },
+        { "id": "practice", "title": "實作", "content": "建立一個字典存「名字、年齡、一句話」：\n\n```python\nperson = {\"name\": \"媽媽\", \"age\": 60, \"motto\": \"加油\"}\nprint(person[\"name\"])\nprint(person[\"motto\"])\n```\n\n試試用不存在的 key 會怎樣，再用 `.get()` 避免錯誤。" },
+        { "id": "summary", "title": "總結", "content": "字典用鍵找值，適合「名字→資料」的對應關係。下一課我們學字典增刪查改。" }
+      ]
+    },
+    {
+      "id": "58",
+      "day": 58,
+      "title": "字典增刪查改",
+      "conceptGoal": "字典操作",
+      "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "派姨跟你練字典的增刪查改：新增鍵值、刪除鍵、查詢、修改值——跟列表類似，但用「鍵」而不是「索引」。" },
+        { "id": "concept", "title": "概念", "content": "字典操作：\n\n- **新增/修改**：`d[key] = value`（key 不存在就新增，存在就修改）\n- **刪除**：`del d[key]` 或 `d.pop(key)`\n- **查詢**：`d[key]` 或 `d.get(key)`\n- **走訪**：`for k in d:` 走訪鍵、`for k, v in d.items():` 走訪鍵值對" },
+        { "id": "demo", "title": "示範", "content": "```python\nd = {\"name\": \"媽媽\"}\n\n# 新增\nd[\"age\"] = 60\nd[\"city\"] = \"台北\"\nprint(d)  # {'name': '媽媽', 'age': 60, 'city': '台北'}\n\n# 修改\nd[\"age\"] = 61\n\n# 刪除\ndel d[\"city\"]\n\n# 走訪\nfor key, value in d.items():\n    print(key, \":\", value)\n```" },
+        { "id": "practice", "title": "實作", "content": "1. 建立字典\n2. 新增兩個鍵值\n3. 修改一個\n4. 刪除一個\n5. 用 `for k, v in d.items()` 印出每一對" },
+        { "id": "summary", "title": "總結", "content": "字典增刪查改和列表類似，但用鍵而不是索引。下一課我們學走訪字典的進階用法。" }
+      ]
+    },
+    {
+      "id": "59",
+      "day": 59,
+      "title": "走訪字典",
+      "conceptGoal": "字典操作",
+      "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "走訪字典可以「只要鍵」「只要值」「鍵和值都要」。三種方式各有用途。" },
+        { "id": "concept", "title": "概念", "content": "三種走訪方式：\n\n- `for k in d:` — 只走訪**鍵**\n- `for v in d.values():` — 只走訪**值**\n- `for k, v in d.items():` — 走訪**鍵值對**（最常用）\n\n```python\nd = {\"a\": 1, \"b\": 2, \"c\": 3}\n\nfor k, v in d.items():\n    print(k, \"→\", v)\n```" },
+        { "id": "demo", "title": "示範", "content": "```python\nscores = {\"國文\": 85, \"數學\": 92, \"英文\": 78}\n\n# 只要鍵\nfor subject in scores:\n    print(subject)\n\n# 只要值\ntotal = 0\nfor score in scores.values():\n    total += score\nprint(\"總分：\", total)\n\n# 鍵和值\nfor subject, score in scores.items():\n    print(subject, \":\", score, \"分\")\n```" },
+        { "id": "practice", "title": "實作", "content": "1. 建立一個科目→分數的字典\n2. 用 `d.items()` 走訪，印出「科目 是 xxx，分數 是 xxx」\n3. 用 `d.values()` 算出所有分數的總和" },
+        { "id": "summary", "title": "總結", "content": "`d.items()` 可以同時拿到鍵和值，是走訪字典最常用的方式。下一課我們學字典的實際應用。" }
+      ]
+    },
+    {
+      "id": "60",
+      "day": 60,
+      "title": "字典實際應用",
+      "conceptGoal": "計數、對照表、分組",
+      "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "派姨跟你用字典做三件實用的事：**計數**（算每個東西出現幾次）、**對照表**（用代碼查名稱）、**分組**（把資料按類別分類）。" },
+        { "id": "concept", "title": "概念", "content": "**計數模式**：遇到一個 key 就加 1\n\n```python\ncount = {}\nfor item in data:\n    count[item] = count.get(item, 0) + 1\n```\n\n`count.get(item, 0)` 的意思是：如果 `item` 存在就回傳它的值，不存在就回傳 0。\n\n**對照表**：事先建好代碼→名稱的對應。\n\n**分組**：按條件把資料分到不同的列表裡。" },
+        { "id": "demo", "title": "示範", "content": "計數：\n\n```python\nwords = [\"蘋果\", \"香蕉\", \"蘋果\", \"橘子\", \"蘋果\", \"香蕉\"]\ncount = {}\nfor w in words:\n    count[w] = count.get(w, 0) + 1\nprint(count)  # {'蘋果': 3, '香蕉': 2, '橘子': 1}\n```\n\n對照表：\n\n```python\ngrade_names = {\"A\": \"優\", \"B\": \"良\", \"C\": \"及格\", \"F\": \"不及格\"}\nprint(grade_names.get(\"A\"))  # 優\n```" },
+        { "id": "practice", "title": "實作", "content": "給一個字串列表，用字典算出每個元素出現幾次，並印出結果。\n\n> 派姨小提示：`count.get(key, 0)` 是字典計數的經典寫法，背下來！" },
+        { "id": "summary", "title": "總結", "content": "字典適合計數、對照、分組。`d.get(key, default)` 是必學的安全取值方式。下一課我們學 Tuple。" }
+      ]
+    },
+    {
+      "id": "61",
+      "day": 61,
+      "title": "Tuple - 不可變的列表",
+      "conceptGoal": "其他資料結構",
+      "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "**元組**（**tuple**）像列表，但「不可變」——建立後不能改、不能增刪。用小括號 `()` 表示。適合「一組固定的值」，例如座標 (x, y)、顏色 (r, g, b)。" },
+        { "id": "concept", "title": "概念", "content": "**Tuple** 的特性：\n\n- 用 `()` 建立：`t = (1, 2, 3)`\n- **不可變**：不能 `t[0] = 10`（會報錯）\n- 可以索引、切片、`len()`、走訪\n- 可以當字典的 key（列表不行！）\n\n什麼時候用？\n- 固定的一組值：座標、RGB 顏色\n- 函數回傳多個值時其實就是回傳 tuple\n- 不想被意外修改的資料" },
+        { "id": "demo", "title": "示範", "content": "```python\npoint = (3, 4)\nprint(point[0])  # 3\nprint(point[1])  # 4\n\n# 解構（unpacking）\nx, y = point\nprint(x, y)  # 3 4\n\n# 當字典的 key\nlocations = {(25.0, 121.5): \"台北\", (22.6, 120.3): \"高雄\"}\nprint(locations[(25.0, 121.5)])  # 台北\n```\n\n⚠️ 常見錯誤：`point[0] = 5` 會報 `TypeError: 'tuple' object does not support item assignment`。" },
+        { "id": "practice", "title": "實作", "content": "1. 建立一個 tuple 存 `(名字, 年齡)`\n2. 印出兩個值\n3. 試試把 tuple 當成字典的 key" },
+        { "id": "summary", "title": "總結", "content": "Tuple 不可變，適合固定的一組值，可以當字典的 key。下一課我們學 Set。" }
+      ]
+    },
+    {
+      "id": "62",
+      "day": 62,
+      "title": "Set - 獨特元素的集合",
+      "conceptGoal": "其他資料結構",
+      "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "**集合**（**set**）是「不重複」的一堆東西。例如 `{1, 2, 3, 2, 1}` 會自動變成 `{1, 2, 3}`。適合**去重**和**檢查成員**。" },
+        { "id": "concept", "title": "概念", "content": "**Set** 的特性：\n\n- 用 `{}` 建立：`s = {1, 2, 3}`\n- 或 `set([1, 2, 2, 3])` 從列表轉換\n- **無序**、**不重複**\n- 支援：`in`、`.add()`、`.remove()`\n- 集合運算：`|` 聯集、`&` 交集、`-` 差集\n\n> 派姨小提示：`x in set` 比 `x in list` 快很多（幾乎瞬間 vs 要一個一個找）！" },
+        { "id": "demo", "title": "示範", "content": "```python\ns = {1, 2, 2, 3, 3, 3}\nprint(s)        # {1, 2, 3}\nprint(2 in s)   # True\n\ns.add(4)\ns.remove(1)\nprint(s)  # {2, 3, 4}\n\n# 集合運算\na = {1, 2, 3}\nb = {2, 3, 4}\nprint(a | b)  # {1, 2, 3, 4} 聯集\nprint(a & b)  # {2, 3} 交集\nprint(a - b)  # {1} 差集\n```" },
+        { "id": "practice", "title": "實作", "content": "1. 把 `[1, 2, 2, 3, 3, 3]` 轉成 set，印出去重後的結果\n2. 試試兩個集合的交集和聯集" },
+        { "id": "summary", "title": "總結", "content": "Set 不重複、適合去重和集合運算。`in` 檢查超快。下一課我們學如何選擇合適的資料結構。" }
+      ]
+    },
+    {
+      "id": "63",
+      "day": 63,
+      "title": "選擇合適的資料結構",
+      "conceptGoal": "第五階段回顧",
+      "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "派姨跟你總結：什麼時候用列表、字典、元組、集合？選對了，程式會更簡單、更快。" },
+        { "id": "concept", "title": "概念", "content": "選擇指南：\n\n- 需要**順序**、**可改** → `list`\n- 需要用**名字找**、一對一對應 → `dict`\n- 需要**固定**一組值、不可改 → `tuple`\n- 需要**不重複**、快速成員檢查 → `set`\n\n常見組合：\n- 聯絡人列表 → `list` of `dict`\n- 座標 → `tuple`\n- 字元出現次數 → `dict`\n- 去重 → `set`" },
+        { "id": "demo", "title": "示範", "content": "聯絡人列表（list of dict）：\n\n```python\ncontacts = [\n    {\"name\": \"小明\", \"phone\": \"0912-345-678\"},\n    {\"name\": \"小華\", \"phone\": \"0923-456-789\"},\n]\n\nfor person in contacts:\n    print(person[\"name\"], \":\", person[\"phone\"])\n```\n\n這比用兩個對齊的列表好多了——每個人的資料都綁在一起。" },
+        { "id": "practice", "title": "實作", "content": "想一個小題目（例如「成績表」「待辦」），選一個資料結構實作，並想想為什麼選它。\n\n例如用 `list` of `dict` 做成績表：\n\n```python\nstudents = [\n    {\"name\": \"小明\", \"score\": 85},\n    {\"name\": \"小華\", \"score\": 92},\n]\n```" },
+        { "id": "summary", "title": "總結", "content": "第五階段完成！你已經會用 `list`、`dict`、`tuple`、`set`，也知道什麼時候該用哪一種。下一階段我們學檔案與實用技能。繼續加油！" }
+      ]
+    }
+  ]
+}

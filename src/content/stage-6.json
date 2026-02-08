@@ -1,0 +1,104 @@
+{
+  "lessons": [
+    {
+      "id": "64", "day": 64, "title": "讀取文字檔", "conceptGoal": "檔案操作", "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "派姨跟你學「讀取文字檔」！程式不只是在螢幕上印東西——真正有用的程式需要讀取和儲存資料。今天我們學如何用 Python 打開和讀取一個文字檔。" },
+        { "id": "concept", "title": "概念", "content": "讀檔三步驟：\n\n1. `open(\"檔名.txt\", \"r\")` — 打開檔案（`\"r\"` 表示讀取模式）\n2. `f.read()` 或 `f.readlines()` — 讀取內容\n3. `f.close()` — 關閉檔案\n\n更好的方式——用 `with`：\n\n```python\nwith open(\"test.txt\", \"r\", encoding=\"utf-8\") as f:\n    content = f.read()\n```\n\n`with` 會**自動關閉**檔案，不用擔心忘記 `close()`。\n\n> 派姨小提示：加 `encoding=\"utf-8\"` 確保中文不會亂碼。" },
+        { "id": "demo", "title": "示範", "content": "```python\n# 讀取整個檔案\nwith open(\"test.txt\", \"r\", encoding=\"utf-8\") as f:\n    content = f.read()\nprint(content)\n\n# 一行一行讀\nwith open(\"test.txt\", \"r\", encoding=\"utf-8\") as f:\n    lines = f.readlines()\nfor i, line in enumerate(lines, 1):\n    print(f\"第 {i} 行: {line.strip()}\")\n```\n\n`.strip()` 可以去掉每行尾巴的換行符號 `\\n`。" },
+        { "id": "practice", "title": "實作", "content": "1. 建立一個 `test.txt` 寫幾行字\n2. 用 Python 讀取並印出\n3. 試試 `readlines()` 印出每一行" },
+        { "id": "summary", "title": "總結", "content": "`open()` + `read()`/`readlines()` 讀取檔案。用 `with` 自動關閉。下一課我們學寫入文字檔。" }
+      ]
+    },
+    {
+      "id": "65", "day": 65, "title": "寫入文字檔", "conceptGoal": "檔案操作", "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "派姨跟你學「寫入文字檔」：把程式的結果存成檔案，下次還能讀回來。用 `open(..., \"w\")` 寫入。" },
+        { "id": "concept", "title": "概念", "content": "寫入模式：\n\n- `\"w\"` — **覆蓋**寫入（原有內容會被清空！）\n- `\"a\"` — **追加**寫入（加在最後面）\n\n```python\nwith open(\"out.txt\", \"w\", encoding=\"utf-8\") as f:\n    f.write(\"第一行\\n\")\n    f.write(\"第二行\\n\")\n```\n\n⚠️ 常見錯誤：`\"w\"` 模式會**覆蓋**原有內容！如果想保留原本的，要用 `\"a\"`。\n\n> 派姨小提示：`write()` 不會自動加換行，要自己加 `\\n`。" },
+        { "id": "demo", "title": "示範", "content": "```python\n# 寫入（覆蓋）\nwith open(\"out.txt\", \"w\", encoding=\"utf-8\") as f:\n    f.write(\"你好！\\n\")\n    f.write(\"這是 Python 寫入的檔案\\n\")\n\n# 追加\nwith open(\"out.txt\", \"a\", encoding=\"utf-8\") as f:\n    f.write(\"追加的一行\\n\")\n\n# 驗證\nwith open(\"out.txt\", \"r\", encoding=\"utf-8\") as f:\n    print(f.read())\n```" },
+        { "id": "practice", "title": "實作", "content": "1. 用 Python 寫入一個檔案，內容是你想存的幾句話\n2. 再用讀取程式讀出來確認\n3. 試試 `\"a\"` 模式追加一行" },
+        { "id": "summary", "title": "總結", "content": "`\"w\"` 覆蓋寫入，`\"a\"` 追加。記得加 `\\n` 換行。下一課我們學 CSV 檔案處理。" }
+      ]
+    },
+    {
+      "id": "66", "day": 66, "title": "CSV 檔案處理", "conceptGoal": "檔案操作", "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "**CSV** 是「逗號分隔值」（Comma-Separated Values）的文字檔，常用來存表格資料。Excel 也能打開 CSV。派姨跟你用 Python 的 `csv` 模組讀寫 CSV。" },
+        { "id": "concept", "title": "概念", "content": "CSV 格式範例：\n\n```\n姓名,年齡,城市\n小明,25,台北\n小華,30,高雄\n```\n\n讀取：用 `csv.reader(f)` 把每一行變成列表。\n寫入：用 `csv.writer(f)` 把列表寫成一行。\n\n```python\nimport csv\n```" },
+        { "id": "demo", "title": "示範", "content": "```python\nimport csv\n\n# 寫入 CSV\nwith open(\"data.csv\", \"w\", encoding=\"utf-8\", newline=\"\") as f:\n    writer = csv.writer(f)\n    writer.writerow([\"姓名\", \"年齡\", \"城市\"])\n    writer.writerow([\"小明\", 25, \"台北\"])\n    writer.writerow([\"小華\", 30, \"高雄\"])\n\n# 讀取 CSV\nwith open(\"data.csv\", \"r\", encoding=\"utf-8\") as f:\n    reader = csv.reader(f)\n    for row in reader:\n        print(row)\n```\n\n> 派姨小提示：寫入時加 `newline=\"\"` 避免 Windows 上出現多餘的空行。" },
+        { "id": "practice", "title": "實作", "content": "1. 建立一個簡單的 CSV（姓名、年齡兩欄）\n2. 用 Python 讀取並印出每一行\n3. 試試寫入一個新的 CSV" },
+        { "id": "summary", "title": "總結", "content": "CSV 用逗號分隔，`csv` 模組讀寫方便。下一課我們學錯誤處理基礎。" }
+      ]
+    },
+    {
+      "id": "67", "day": 67, "title": "錯誤處理基礎", "conceptGoal": "try-except", "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "程式可能出錯：檔案不存在、除以零、型別錯誤……。用 `try-except` 可以「抓住」錯誤，讓程式不要當掉，而是印出友善的訊息。" },
+        { "id": "concept", "title": "概念", "content": "**try-except** 語法：\n\n```python\ntry:\n    可能出錯的程式碼\nexcept 錯誤類型:\n    發生錯誤時要做的事\n```\n\n常見的錯誤類型：\n- `FileNotFoundError` — 檔案不存在\n- `ZeroDivisionError` — 除以零\n- `ValueError` — 值不對（例如 `int(\"abc\")`）\n- `KeyError` — 字典找不到鍵\n- `Exception` — 所有錯誤的通用類型" },
+        { "id": "demo", "title": "示範", "content": "```python\n# 檔案不存在\ntry:\n    with open(\"不存在.txt\") as f:\n        content = f.read()\nexcept FileNotFoundError:\n    print(\"檔案找不到！\")\n\n# 除以零\ntry:\n    result = 10 / 0\nexcept ZeroDivisionError:\n    print(\"不能除以零！\")\n\n# 多個 except\ntry:\n    num = int(\"abc\")\nexcept ValueError:\n    print(\"無法轉成數字！\")\n```\n\n> 派姨小提示：`try-except` 就像安全網——即使出錯，程式也不會整個當掉。" },
+        { "id": "practice", "title": "實作", "content": "1. 用 `try-except` 包住讀取檔案的程式，若檔案不存在就印出提示\n2. 用 `try-except` 包住「除以零」的運算" },
+        { "id": "summary", "title": "總結", "content": "`try-except` 是程式的安全網，讓你優雅地處理錯誤。下一課我們做檔案綜合應用。" }
+      ]
+    },
+    {
+      "id": "68", "day": 68, "title": "檔案綜合應用", "conceptGoal": "檔案操作", "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "派姨跟你做「檔案綜合應用」：讀取一個文字檔 → 處理內容（算行數、字數）→ 寫入另一個檔案或印出統計。把前面學的串起來！" },
+        { "id": "concept", "title": "概念", "content": "經典流程：**讀取 → 處理 → 寫入**\n\n這個流程結合了：\n- 檔案讀取（`open` + `read`）\n- 資料處理（迴圈、條件、字串方法）\n- 檔案寫入（`open` + `write`）\n- 錯誤處理（`try-except`）" },
+        { "id": "demo", "title": "示範", "content": "```python\ntry:\n    with open(\"article.txt\", \"r\", encoding=\"utf-8\") as f:\n        lines = f.readlines()\n\n    line_count = len(lines)\n    word_count = sum(len(line.split()) for line in lines)\n    char_count = sum(len(line.strip()) for line in lines)\n\n    report = f\"行數：{line_count}\\n字數：{word_count}\\n字元數：{char_count}\\n\"\n    print(report)\n\n    with open(\"report.txt\", \"w\", encoding=\"utf-8\") as f:\n        f.write(report)\n    print(\"報告已儲存到 report.txt\")\n\nexcept FileNotFoundError:\n    print(\"找不到 article.txt！\")\n```" },
+        { "id": "practice", "title": "實作", "content": "1. 建立一個文字檔 `article.txt` 寫幾行內容\n2. 讀取後算出「有幾行」「有幾個字」\n3. 把統計結果寫入 `report.txt`" },
+        { "id": "summary", "title": "總結", "content": "讀檔 → 處理 → 寫檔是程式設計的經典流程。下一課我們學 `datetime` 模組。" }
+      ]
+    },
+    {
+      "id": "69", "day": 69, "title": "datetime：時間日期", "conceptGoal": "實用模組", "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "派姨跟你學 `datetime` 模組：取得現在時間、格式化印出、計算幾天後、兩個日期的差距。處理時間是真實程式常常需要的！" },
+        { "id": "concept", "title": "概念", "content": "```python\nfrom datetime import datetime, timedelta\n```\n\n- `datetime.now()` — 取得現在的日期時間\n- `.strftime(\"%Y-%m-%d\")` — 格式化成字串\n- `timedelta(days=7)` — 表示「7 天」\n- 兩個 datetime 相減 → 得到 timedelta" },
+        { "id": "demo", "title": "示範", "content": "```python\nfrom datetime import datetime, timedelta\n\nnow = datetime.now()\nprint(\"現在：\", now.strftime(\"%Y-%m-%d %H:%M\"))\n\n# 7 天後\nnext_week = now + timedelta(days=7)\nprint(\"7 天後：\", next_week.strftime(\"%Y-%m-%d\"))\n\n# 兩個日期的差距\nbirthday = datetime(2026, 6, 15)\ndiff = birthday - now\nprint(f\"距離生日還有 {diff.days} 天\")\n```" },
+        { "id": "practice", "title": "實作", "content": "1. 印出今天的日期（年-月-日）\n2. 算出 7 天後和 30 天後的日期\n3. 挑戰：算出距離某個特殊日期還有幾天" },
+        { "id": "summary", "title": "總結", "content": "`datetime` 處理時間日期，`timedelta` 做加減。下一課我們學 `random` 模組。" }
+      ]
+    },
+    {
+      "id": "70", "day": 70, "title": "random：隨機數", "conceptGoal": "實用模組", "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "派姨跟你學 `random` 模組：產生隨機數、隨機選擇、打亂順序。做遊戲、抽獎、測試都會用到！" },
+        { "id": "concept", "title": "概念", "content": "```python\nimport random\n```\n\n- `random.random()` — 0~1 的隨機浮點數\n- `random.randint(a, b)` — a 到 b 的隨機整數（包含 a 和 b）\n- `random.choice(lst)` — 從列表隨機選一個\n- `random.shuffle(lst)` — 打亂列表順序\n- `random.sample(lst, k)` — 隨機選 k 個不重複" },
+        { "id": "demo", "title": "示範", "content": "```python\nimport random\n\n# 隨機整數\nprint(random.randint(1, 100))\n\n# 隨機選擇\ncolors = [\"紅\", \"橙\", \"黃\", \"綠\", \"藍\"]\nprint(\"今日幸運色：\", random.choice(colors))\n\n# 隨機選 3 個不重複\nprint(\"抽 3 個：\", random.sample(colors, 3))\n\n# 打亂順序\nnums = [1, 2, 3, 4, 5]\nrandom.shuffle(nums)\nprint(\"打亂後：\", nums)\n```" },
+        { "id": "practice", "title": "實作", "content": "1. 印出 5 個 1～100 的隨機整數\n2. 從一個列表隨機選一個\n3. 用 `random.sample()` 隨機選 3 個不重複的" },
+        { "id": "summary", "title": "總結", "content": "`random` 可以產生隨機數、隨機選擇、打亂順序。下一課我們學 `os` 模組。" }
+      ]
+    },
+    {
+      "id": "71", "day": 71, "title": "os：檔案系統", "conceptGoal": "實用模組", "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "派姨跟你學 `os` 模組：列出目錄內容、檢查檔案是否存在、取得當前路徑、建立資料夾。讓 Python 操作你的檔案系統！" },
+        { "id": "concept", "title": "概念", "content": "```python\nimport os\n```\n\n- `os.getcwd()` — 取得當前工作目錄\n- `os.listdir(\".\")` — 列出目錄裡的檔案\n- `os.path.exists(\"檔名\")` — 檔案是否存在\n- `os.mkdir(\"資料夾名\")` — 建立新資料夾\n- `os.path.join(\"a\", \"b\")` — 組合路徑" },
+        { "id": "demo", "title": "示範", "content": "```python\nimport os\n\n# 當前目錄\nprint(\"當前路徑：\", os.getcwd())\n\n# 列出檔案\nfiles = os.listdir(\".\")\nprint(\"目錄內容：\", files)\n\n# 檢查檔案是否存在\nif os.path.exists(\"test.txt\"):\n    print(\"test.txt 存在！\")\nelse:\n    print(\"test.txt 不存在\")\n```" },
+        { "id": "practice", "title": "實作", "content": "1. 印出當前目錄的路徑\n2. 列出目錄裡的所有檔案\n3. 用 `os.path.exists()` 檢查某個檔案是否存在" },
+        { "id": "summary", "title": "總結", "content": "`os` 模組讓 Python 操作檔案系統。下一課我們學匯入與使用模組的完整觀念。" }
+      ]
+    },
+    {
+      "id": "72", "day": 72, "title": "匯入與使用模組", "conceptGoal": "實用模組", "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "派姨跟你複習「匯入與使用模組」的完整觀念：`import`、`from...import`、別名 `as`、以及怎麼安裝第三方套件。" },
+        { "id": "concept", "title": "概念", "content": "匯入方式：\n\n```python\nimport math           # 用 math.sqrt()\nfrom math import sqrt  # 直接用 sqrt()\nimport datetime as dt  # 用別名 dt\n```\n\n安裝第三方套件：\n\n```\npip install 套件名\n```\n\n> 派姨小提示：避免 `from math import *`（匯入全部），因為可能跟你的變數名字衝突。" },
+        { "id": "demo", "title": "示範", "content": "```python\nimport math\nprint(math.pi)        # 3.141592653589793\nprint(math.sqrt(16))  # 4.0\n\nfrom datetime import datetime as dt\nprint(dt.now())\n\nfrom random import randint, choice\nprint(randint(1, 10))\nprint(choice([\"a\", \"b\", \"c\"]))\n```" },
+        { "id": "practice", "title": "實作", "content": "1. 匯入 `math`，用 `sqrt` 和 `pi`\n2. 匯入 `random`，用 `choice`\n3. 試試 `from 模組 import 函數` 的寫法" },
+        { "id": "summary", "title": "總結", "content": "`import` 和 `from...import` 是使用模組的兩種方式。下一課我們做實用模組綜合練習。" }
+      ]
+    },
+    {
+      "id": "73", "day": 73, "title": "實用模組綜合", "conceptGoal": "第六階段回顧", "noCode": false,
+      "sections": [
+        { "id": "intro", "title": "引入", "content": "派姨跟你做「實用模組綜合」：結合 `datetime`、`random`、`os` 和檔案操作，做一個有趣的小工具！" },
+        { "id": "concept", "title": "概念", "content": "組合運用多個模組：\n\n- 需要時間 → `datetime`\n- 需要隨機 → `random`\n- 需要檔案 → `open` 或 `os`\n- 需要處理錯誤 → `try-except`\n\n把它們組合起來就能做出實用的小工具！" },
+        { "id": "demo", "title": "示範", "content": "今日幸運小工具：\n\n```python\nfrom datetime import datetime\nimport random\n\ncolors = [\"紅\", \"橙\", \"黃\", \"綠\", \"藍\", \"紫\"]\nmottos = [\n    \"今天會是美好的一天！\",\n    \"繼續加油，你做得很好！\",\n    \"學習是最好的投資！\",\n    \"慢慢來，比較快。\",\n]\n\nnow = datetime.now()\nprint(f\"\\n=== {now.strftime('%Y-%m-%d')} 今日運勢 ===\")\nprint(f\"幸運色：{random.choice(colors)}\")\nprint(f\"今日箴言：{random.choice(mottos)}\")\nprint(f\"幸運數字：{random.randint(1, 99)}\")\n```" },
+        { "id": "practice", "title": "實作", "content": "做一個小程式：結合 2～3 個模組。例如：\n\n- 印出現在時間 + 隨機一句鼓勵的話\n- 列出目錄裡的檔案 + 隨機選一個\n- 記錄今天的心情到檔案裡\n\n第六階段完成！" },
+        { "id": "summary", "title": "總結", "content": "第六階段完成！你已經會讀寫檔案、處理 CSV、錯誤處理、以及 `datetime`、`random`、`os` 等實用模組。下一階段我們學**物件導向思維**。繼續加油！" }
+      ]
+    }
+  ]
+}
